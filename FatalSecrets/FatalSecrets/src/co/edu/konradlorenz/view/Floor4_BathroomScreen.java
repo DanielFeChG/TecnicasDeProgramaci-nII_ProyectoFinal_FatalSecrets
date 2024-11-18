@@ -15,12 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Floor4_AisleScreen extends JPanel {
+public class Floor4_BathroomScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
 	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
-	
 	private JLabel lblTite;
 	private JButton btnGoBack;
 	private JButton botonPersonaje;
@@ -28,7 +27,7 @@ public class Floor4_AisleScreen extends JPanel {
 	/**
 	 * Constructor del panel.
 	 */
-	public Floor4_AisleScreen(GameWindow gameWindow) {
+	public Floor4_BathroomScreen(GameWindow gameWindow) {
 		setSize(1004, 734);
 		setLayout(null);
 
@@ -62,7 +61,7 @@ public class Floor4_AisleScreen extends JPanel {
 
 		try {
 			// Cargar la imagen desde un archivo
-			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/detectiveOfficeTemp.jpg"));
+			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor4_BathroomImg.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

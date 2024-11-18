@@ -18,7 +18,7 @@ public class GameWindow extends JFrame {
 	private Floor1_CafeteriaScreen floor1_Cafeteria;
 	private Floor2_LibraryScreen floor2_Library;
 	private Floor3_ComputerRoomScreen floor3_ComputerRoom;
-	private Floor4_AisleScreen floor4_Aisle;
+	private Floor4_BathroomScreen floor4_Aisle;
 	private Floor5_Classroom501NScreen floor5_Classroom501N;
 	private Floor6_TerraceScreen floor6_Terrace;
 	private Floor7_AisleScreen floor7_Aisle;
@@ -39,7 +39,7 @@ public class GameWindow extends JFrame {
 		floor1_Cafeteria = new Floor1_CafeteriaScreen(this);
 		floor2_Library = new Floor2_LibraryScreen(this);
 		floor3_ComputerRoom = new Floor3_ComputerRoomScreen(this);
-		floor4_Aisle = new Floor4_AisleScreen(this);
+		floor4_Aisle = new Floor4_BathroomScreen(this);
 		floor5_Classroom501N = new Floor5_Classroom501NScreen(this);
 		floor6_Terrace = new Floor6_TerraceScreen(this);
 		floor7_Aisle = new Floor7_AisleScreen(this);
@@ -134,11 +134,11 @@ public class GameWindow extends JFrame {
 		this.floor3_ComputerRoom = floor3_ComputerRoom;
 	}
 
-	public Floor4_AisleScreen getFloor4_Aisle() {
+	public Floor4_BathroomScreen getFloor4_Aisle() {
 		return floor4_Aisle;
 	}
 
-	public void setFloor4_Aisle(Floor4_AisleScreen floor4_Aisle) {
+	public void setFloor4_Aisle(Floor4_BathroomScreen floor4_Aisle) {
 		this.floor4_Aisle = floor4_Aisle;
 	}
 

@@ -3,18 +3,14 @@ package co.edu.konradlorenz.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Rectangle;
 
 public class ElevatorScreen extends JPanel {
 
@@ -158,7 +154,7 @@ public class ElevatorScreen extends JPanel {
         
         try {
             // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaAscensor.jpg"));
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/ElevatorImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

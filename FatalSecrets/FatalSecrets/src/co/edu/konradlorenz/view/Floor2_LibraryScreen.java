@@ -67,7 +67,7 @@ public class Floor2_LibraryScreen extends JPanel {
         
         try {
             // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaBiblioteca.jpg"));
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor2_LibraryImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

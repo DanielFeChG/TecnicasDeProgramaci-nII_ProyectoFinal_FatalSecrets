@@ -62,7 +62,7 @@ public class Floor3_ComputerRoomScreen extends JPanel {
 
 		try {
 			// Cargar la imagen desde un archivo
-			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaSalonSistemas.jpg"));
+			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor3_ComputerRoomImg.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

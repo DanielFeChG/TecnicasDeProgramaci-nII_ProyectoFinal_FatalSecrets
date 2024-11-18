@@ -75,7 +75,7 @@ public class Floor1_CafeteriaScreen extends JPanel {
 
 		try {
 			// Cargar la imagen desde un archivo
-			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/detectiveOfficeTemp.jpg"));
+			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor1_CafeteriaImg.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

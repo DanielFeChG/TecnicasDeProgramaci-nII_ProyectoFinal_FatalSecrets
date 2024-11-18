@@ -44,7 +44,7 @@ public class Floor7_AisleScreen extends JPanel {
         
         try {
             // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaTerraza.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor7_AisleImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

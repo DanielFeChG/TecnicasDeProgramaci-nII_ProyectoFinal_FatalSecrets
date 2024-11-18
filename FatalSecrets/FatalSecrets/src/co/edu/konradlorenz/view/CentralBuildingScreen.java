@@ -71,7 +71,7 @@ public class CentralBuildingScreen extends JPanel {
         add(btnBack); 
         try {
             // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaEdificioCentral.jpg"));
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/CentralBuildingImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

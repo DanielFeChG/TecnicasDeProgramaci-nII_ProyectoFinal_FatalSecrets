@@ -19,7 +19,7 @@ public class Floor5_Classroom501NScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
 	
 	//Delcaracion de elementos
     private JButton botonPersonaje;

@@ -51,7 +51,7 @@ public class RiddleDialog extends JDialog {
         checkButton.setBounds(261, 219, 85, 21);
         getContentPane().add(checkButton);
         
-        lblacertijo = new JLabel(acertijo);
+        lblacertijo = new JLabel("<html><center>"+acertijo+"</html>");
         lblacertijo.setHorizontalAlignment(SwingConstants.CENTER);
         lblacertijo.setBounds(38, 52, 294, 143);
         getContentPane().add(lblacertijo);
@@ -65,7 +65,7 @@ public class RiddleDialog extends JDialog {
 
 	}
 	
-	public RiddleDialog(GameWindow gameWindow, String titulo, String acertijo, String ingAcertijo) {
+	public RiddleDialog(GameWindow gameWindow, String titulo, String acertijo, String imgAcertijo) {
 		setTitle("Interacción con NPC");
         setSize(400, 300);
         setLocationRelativeTo(gameWindow);
@@ -90,9 +90,9 @@ public class RiddleDialog extends JDialog {
         checkButton.setBounds(261, 219, 85, 21);
         getContentPane().add(checkButton);
         
-        lblacertijo = new JLabel(acertijo);
-        lblacertijo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblacertijo = new JLabel("<html><center>"+acertijo+"</html>");
         lblacertijo.setBounds(38, 52, 294, 143);
+        lblacertijo.setHorizontalAlignment(SwingConstants.CENTER);
         getContentPane().add(lblacertijo);
         
         lblResultado = new JLabel("");

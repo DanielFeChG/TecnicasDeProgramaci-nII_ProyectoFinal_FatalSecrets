@@ -59,7 +59,7 @@ public class Floor6_TerraceScreen extends JPanel {
         
         try {
             // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaTerraza.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_Terrace2Img.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

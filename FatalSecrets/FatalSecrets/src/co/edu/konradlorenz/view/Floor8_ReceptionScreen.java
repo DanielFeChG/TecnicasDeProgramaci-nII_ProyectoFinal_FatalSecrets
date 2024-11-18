@@ -60,7 +60,7 @@ public class Floor8_ReceptionScreen extends JPanel {
         
         try {
             // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/PruebaTerraza.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor8_ReceptionImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
