@@ -2,6 +2,10 @@ package co.edu.konradlorenz.controler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JButton;
+
 import co.edu.konradlorenz.model.*;
 import co.edu.konradlorenz.view.*;
 
@@ -9,14 +13,15 @@ import co.edu.konradlorenz.view.*;
 
 public class GameController implements ActionListener{
 	
-	
-	
 	private GameWindow objGameWindow;
 	private Case casoJuego;
-
+	private Map<JButton, NPC> buttonNpcMap = new HashMap<>();
 	
 	public GameController() {
 		objGameWindow = new GameWindow();
+		
+	    // Inicializar el caso y las ubicaciones
+	    inicializarCaso();
 		
 		//Agregar todos los listener
 		objGameWindow.getCentralBuilding().getBotonPersonaje().addActionListener(this);
@@ -26,15 +31,51 @@ public class GameController implements ActionListener{
 		objGameWindow.getFloor4_Aisle().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getFloor5_Classroom501N().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getFloor6_Terrace().getBotonPersonaje().addActionListener(this);
-		objGameWindow.getFloor7_Aisle().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getFloor8_Reception().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getGym().getBotonPersonaje().addActionListener(this);
-
 		
+		 // Inicializar el mapa de botones y NPCs
+	    buttonNpcMap.put(
+	        objGameWindow.getCentralBuilding().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(1).getEntidadesLugar().get(0) // NPC del Edificio Central
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor1_Cafeteria().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(4).getEntidadesLugar().get(0) // NPC de la Cafetería
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor2_Library().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(5).getEntidadesLugar().get(0) // NPC de la Biblioteca
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor3_ComputerRoom().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(6).getEntidadesLugar().get(0) // NPC de la Sala de Computadoras
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor4_Aisle().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(7).getEntidadesLugar().get(0) // NPC del Pasillo del Piso 4
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor5_Classroom501N().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(8).getEntidadesLugar().get(0) // NPC del Salón 501N
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor6_Terrace().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(9).getEntidadesLugar().get(0) // NPC de la Terraza
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getFloor8_Reception().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(11).getEntidadesLugar().get(0) // NPC de la Recepción
+	    );
+	    buttonNpcMap.put(
+	        objGameWindow.getGym().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(2).getEntidadesLugar().get(0) // NPC del Gimnasio
+	    );
+
+	
 	}
 	
 	public void run() {	
-		inicializarCaso();
 		objGameWindow.setVisible(true);//Lanzar JFrame
 		Player jugador = new Player("DetectiveJugador", casoJuego.getUbicaciones().get(0)); // Oficina del detective);
 		
@@ -46,17 +87,30 @@ public class GameController implements ActionListener{
 	}
 	
 	public void inicializarCaso() {
+		
+		// ------------------------------------ CREAR ACERTIJOS ------------------------------------
+		
+		//Todos los acertijos se deben recibir en minúsculas y sin signos de puntuacion
+		Riddle act1Estudiante = new Riddle("No recuerdo mi código estudiantil", "506232729");
+		Riddle act2Conserje = new Riddle("No recuerdo dóde dejé el trapero", "recepcion decanatura");
+		Riddle act3Instructora = new Riddle("Por asignar...", "solucion");//Con las adivinqanzas de las aulas virtuales
+		Riddle act4Bibliotecario = new Riddle("Necesito ubicar este libro en la sección correcta", "psicologia");
+		Riddle act5Profesora = new Riddle("Necesito encontrar el número de la llave de este salón", "144");
+		Riddle act6Recepcionista = new Riddle("Yo creo mucho en la suerte, solo hablaré contigo si adivinas el número en el que estoy pensando", "0");//Este numero es Random
+		Riddle act7Cocinero = new Riddle("Necesito que ajustes el tiempo del microondas", "");//Tiempo real
+		Riddle act8Vigilante = new Riddle("Necesito recordar la clave de acceso al sistema de seguridad de la universidad", "FUKONRADL");	
+		
 		// ------------------------------------ CREAR NPCS ------------------------------------
 		
 		NPC esposa = new Innocent("Karen", "Esposa del decano", "/imgEsposa", "Vine a visitar a mi esposo...", null, null);
-		NPC estudiante = new Innocent("Daniel", "Estudiante", "/imgEstudiante", "Fuí a la oficina del decano porque...", null, null, null);
-		NPC conserje = new Innocent("Fabian", "Conserje", "/imgConserje", "He estado haciendo el aseo de los baños de todos los pisos...", null, null, null);
-		NPC instructura = new Innocent("Natalia", "Instructora del gimnasio", "/imgInstructora", "Como todos los dias he estado unicamente en el giimnasio...", null, null, null);
-		NPC bibliotecario = new Innocent("Uriel", "Bibliotecario", "/imgBibliotecario", "Estaba organizando uns libros que devolvieron.. pero kmlkf sdopef eefefmrlk m kefmwkemfkewmo kefmefmwolf oef ef i efmwekmlmewflnwef ked knmlkwefm este es el final", null, null, null);
-		NPC profesora = new Innocent("Lucía", "Profesora", "/imgProfesora", "Estaba reemplazando al profesor en la clase de programación pq no llegó...", null, null, null);
-		NPC recepcionista = new Innocent("Rocio", "Recepcionista de decanatura", "/imgRecepcionista", "Todo el día he estado en mi puesto de trabajo...", null, null, null);
-		NPC vigilante = new Innocent("Adriana", "Vigilante", "/imgVigilante", "Acabo de llegar a mi turno...", null, null, null);
-		NPC cocinero = new Murder("Oscar", "Cocinero de la terraza del sexto piso", "/imgCocinero", "Hoy he estado en la caseta durante todo el día...", null, null);
+		NPC estudiante = new Innocent("Daniel", "Estudiante", "/imgEstudiante", "Fuí a la oficina del decano porque...", act1Estudiante, null, null);
+		NPC conserje = new Innocent("Fabian", "Conserje", "/imgConserje", "He estado haciendo el aseo de los baños de todos los pisos...", act2Conserje, null, null);
+		NPC instructura = new Innocent("Natalia", "Instructora del gimnasio", "/imgInstructora", "Como todos los dias he estado unicamente en el giimnasio...", act3Instructora, null, null);
+		NPC bibliotecario = new Innocent("Uriel", "Bibliotecario", "/imgBibliotecario", "Estaba organizando uns libros que devolvieron.. pero kmlkf sdopef eefefmrlk m kefmwkemfkewmo kefmefmwolf oef ef i efmwekmlmewflnwef ked knmlkwefm este es el final", act4Bibliotecario, null, null);
+		NPC profesora = new Innocent("Lucía", "Profesora", "/imgProfesora", "Estaba reemplazando al profesor en la clase de programación pq no llegó...", act5Profesora, null, null);
+		NPC recepcionista = new Innocent("Rocio", "Recepcionista de decanatura", "/imgRecepcionista", "Todo el día he estado en mi puesto de trabajo...", act6Recepcionista, null, null);
+		NPC vigilante = new Innocent("Adriana", "Vigilante", "/imgVigilante", "Acabo de llegar a mi turno...", act8Vigilante, null, null);
+		NPC cocinero = new Murder("Oscar", "Cocinero de la terraza del sexto piso", "/imgCocinero", "Hoy he estado en la caseta durante todo el día...", act7Cocinero, null);
 		
 		// ------------------------------------ CREAR UBICACIONES ------------------------------------
 		
@@ -73,31 +127,9 @@ public class GameController implements ActionListener{
 		Location piso7 = new Location("Pasillo séptimo piso", true);
 		Location piso8 = new Location("Recepción decanatura", true);
 		
-		// ------------------------------------ CREAR ACERTIJOS ------------------------------------
-		
-		//Todos los acertijos se deben recibir en minúsculas y sin signos de puntuacion
-		Riddle act1Estudiante = new Riddle("No recuerdo mi código estudiantil", "506232729");
-		Riddle act2Conserje = new Riddle("No recuerdo dóde dejé el trapero", "recepcion decanatura");
-		Riddle act3Instructora = new Riddle(null, null);//Con las adivinqanzas de las aulas virtuales
-		Riddle act4Bibliotecario = new Riddle("Necesito ubicar este libro en la sección correcta", "ficcion");
-		Riddle act5Profesora = new Riddle("Necesito encontrar el color de la llave de este salón", "morado");
-		Riddle act6Recepcionista = new Riddle("Yo creo mucho en la suerte, solo hablaré contigo si adivinas el número en el que estoy pensando", "0");//Este numero es Random
-		Riddle act7Cocinero = new Riddle("Necesito que ajustes el tiempo del microondas", "");//Tiempo real
-		Riddle act8Vigilante = new Riddle("Necesito recordar la clave de acceso al sistema de seguridad de la universidad", "FUKONRADL");	
-		
-		//  ------------------------------------ ASIGNAR ACERTIJOS A NPCs------------------------------------
-		estudiante.setAcertijo(act1Estudiante);
-		conserje.setAcertijo(act2Conserje);
-		instructura.setAcertijo(act3Instructora);
-		bibliotecario.setAcertijo(act4Bibliotecario);
-		profesora.setAcertijo(act5Profesora);
-		recepcionista.setAcertijo(act6Recepcionista);
-		cocinero.setAcertijo(act7Cocinero);
-		vigilante.setAcertijo(act8Vigilante);
-		
 		// ------------------------------------ CREAR CASO Y ASIGNAR UBICACIONES ------------------------------------
 		
-		 casoJuego = new Case("El día de hoy el decano de la facultad de ingenierías ha sido asesinado", (Murder) cocinero);
+		 casoJuego = new Case("Asesinato del decano", (Murder) cocinero);
 		
 		// Agregar las ubicaciones
 		casoJuego.getUbicaciones().add(oficinaDetective); //0
@@ -121,23 +153,11 @@ public class GameController implements ActionListener{
 		casoJuego.getUbicaciones().get(8).getEntidadesLugar().add(profesora);
 		casoJuego.getUbicaciones().get(9).getEntidadesLugar().add(cocinero);
 		casoJuego.getUbicaciones().get(11).getEntidadesLugar().add(recepcionista);		
+		casoJuego.getUbicaciones().get(1).getEntidadesLugar().add(vigilante);		
+		casoJuego.getUbicaciones().get(2).getEntidadesLugar().add(instructura);		
+
 		
 		}
-
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	    if (e.getSource() == objGameWindow.getFloor2_Library().getBotonPersonaje()) {
-	        NPC npc = (NPC) casoJuego.getUbicaciones().get(5).getEntidadesLugar().get(0); // Ejemplo: Bibliotecario
-	        if (npc.getAcertijo() != null && !npc.getAcertijo().isEstado()) {
-	            showRiddleDialog(npc);
-	        } else {
-	            showTestimonyDialog(npc);
-	        }
-	    }
-		
-	}
 
 	public void showRiddleDialog(NPC npc) {
 	    Riddle riddle = npc.getAcertijo();
@@ -154,13 +174,28 @@ public class GameController implements ActionListener{
 		    }
         });
 	    riddleDialog.setVisible(true);
-	    
 	}
 
 	public void showTestimonyDialog(NPC npc) {
 	    TestimonyDialog testimonyDialog = new TestimonyDialog(objGameWindow, npc.getNombre(),npc.getTestimonio());
 	    testimonyDialog.setVisible(true);
 	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	    JButton sourceButton = (JButton) e.getSource();
+	    NPC npc = buttonNpcMap.get(sourceButton); // Obtiene el NPC asociado al botón
+
+	    if (npc != null) { // Verifica si el botón tiene un NPC asociado
+	        if (npc.getAcertijo() != null && !npc.getAcertijo().isEstado()) {
+	            showRiddleDialog(npc);
+	        } else {
+	            showTestimonyDialog(npc);
+	        }
+	    }
+	}
+
 
 	
 	
