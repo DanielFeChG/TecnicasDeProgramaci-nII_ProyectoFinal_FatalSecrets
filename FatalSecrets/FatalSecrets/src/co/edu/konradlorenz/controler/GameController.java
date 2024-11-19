@@ -31,6 +31,7 @@ public class GameController implements ActionListener{
 		objGameWindow.getFloor4_Aisle().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getFloor5_Classroom501N().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getFloor6_Terrace().getBotonPersonaje().addActionListener(this);
+		objGameWindow.getFloor6_Kiosk().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getFloor8_Reception().getBotonPersonaje().addActionListener(this);
 		objGameWindow.getGym().getBotonPersonaje().addActionListener(this);
 		
@@ -79,7 +80,6 @@ public class GameController implements ActionListener{
 		objGameWindow.setVisible(true);//Lanzar JFrame
 		Player jugador = new Player("DetectiveJugador", casoJuego.getUbicaciones().get(0)); // Oficina del detective);
 		
-		   // Lógica principal del juego (puedes usar un bucle para el flujo general)
 	    boolean gameRunning = true;
 	    while (gameRunning) {
 	    	

@@ -19,7 +19,7 @@ public class CentralBuildingScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/securityGuardImg.png"));
 	
 	private JButton btnGoBack, botonPersonaje;
 	
@@ -78,7 +78,7 @@ public class CentralBuildingScreen extends JPanel {
         
         //Personaje como boton
         botonPersonaje = new JButton();
-        botonPersonaje.setBounds(641, 230, 209, 382);
+        botonPersonaje.setBounds(831, 420, 113, 246);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -96,6 +96,17 @@ public class CentralBuildingScreen extends JPanel {
         });
         // Añadir el botón al JFrame
         add(botonPersonaje);
+        
+        
+        
+        // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
+        ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/CentralBuildingImg.jpg"));
+        JLabel lblCharacterImage = new JLabel();
+        lblCharacterImage.setSize(getSize());
+        Image resizedImage = characterImage.getImage().getScaledInstance(lblCharacterImage.getWidth(), lblCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+        lblCharacterImage.setIcon(resizedIcon);
+        add(lblCharacterImage);
     }
 
 

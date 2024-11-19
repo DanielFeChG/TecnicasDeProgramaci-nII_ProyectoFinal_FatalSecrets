@@ -15,46 +15,40 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Floor5_Classroom501NScreen extends JPanel {
+public class Floor6_KioskScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/TeacherImg.png"));
-	
-	//Delcaracion de elementos
+	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ChefImg.png"));
     private JButton botonPersonaje;
     private JButton btnGoBack;
     private JLabel lblTite;
     
-    public Floor5_Classroom501NScreen(GameWindow gameWindow) {
-        setSize(1004, 734);
+	public Floor6_KioskScreen(GameWindow gameWindow) {
+		setSize(1004, 734);
         setLayout(null);
         
         // Inicialización de elementos en el constructor
-        lblTite = new JLabel("Salón 501-N");
+        lblTite = new JLabel("kiosko");
         lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
         lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(405, 666, 214, 58);
+        lblTite.setBounds(406, 666, 130, 58);
         add(lblTite);
         
-        btnGoBack = new JButton("Volver al ascensor");
+        btnGoBack = new JButton("Volver a la terraza");
         btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoBack.setBounds(54, 653, 243, 58);
+        btnGoBack.setBounds(734, 655, 243, 58);
         btnGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameWindow.updateScreen(gameWindow.getElevator());
+                gameWindow.updateScreen(gameWindow.getFloor6_Terrace());
             }
         });
         add(btnGoBack);
         
         // Personaje como botón
         botonPersonaje = new JButton();
-        botonPersonaje.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        botonPersonaje.setBounds(137, 217, 385, 742);
+        botonPersonaje.setBounds(138, 251, 223, 529);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -63,7 +57,7 @@ public class Floor5_Classroom501NScreen extends JPanel {
         add(botonPersonaje);
         
         // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
-        ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
+        ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_KioskImg.jpg"));
         JLabel lbleCharacterImage = new JLabel();
         lbleCharacterImage.setSize(getSize());
         Image eresizedImage = echaracterImage.getImage().getScaledInstance(lbleCharacterImage.getWidth(), lbleCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
@@ -73,7 +67,7 @@ public class Floor5_Classroom501NScreen extends JPanel {
         
         try {
             // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_KioskImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

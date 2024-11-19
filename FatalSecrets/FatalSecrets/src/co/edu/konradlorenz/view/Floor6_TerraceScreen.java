@@ -22,6 +22,7 @@ public class Floor6_TerraceScreen extends JPanel {
 	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
 	
     private JButton botonPersonaje;
+    private JButton btnGoKiosk;
     private JButton btnGoBack;
     private JLabel lblTite;
     
@@ -47,9 +48,20 @@ public class Floor6_TerraceScreen extends JPanel {
         });
         add(btnGoBack);
         
+        btnGoKiosk = new JButton("Kiosko");
+        btnGoKiosk.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
+        btnGoKiosk.setBounds(386, 373, 243, 58);
+        btnGoKiosk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameWindow.updateScreen(gameWindow.getFloor6_Kiosk());
+            }
+        });
+        add(btnGoKiosk);
+        
         // Personaje como botón
         botonPersonaje = new JButton();
-        botonPersonaje.setBounds(227, 207, 309, 436);
+        botonPersonaje.setBounds(701, 225, 92, 132);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -57,9 +69,18 @@ public class Floor6_TerraceScreen extends JPanel {
         botonPersonaje.setContentAreaFilled(false); // Hacer el fondo transparente
         add(botonPersonaje);
         
+        // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
+        ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_TerraceImg.jpg"));
+        JLabel lbleCharacterImage = new JLabel();
+        lbleCharacterImage.setSize(getSize());
+        Image eresizedImage = echaracterImage.getImage().getScaledInstance(lbleCharacterImage.getWidth(), lbleCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon eresizedIcon = new ImageIcon(eresizedImage);
+        lbleCharacterImage.setIcon(eresizedIcon);
+        add(lbleCharacterImage);
+        
         try {
             // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_Terrace2Img.jpg"));
+            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_TerraceImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

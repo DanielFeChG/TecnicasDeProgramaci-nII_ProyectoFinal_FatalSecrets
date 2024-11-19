@@ -18,7 +18,7 @@ public class Floor2_LibraryScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/LibrarianImg.png"));
 	
 	//Delcaracion de elementos
 	private JButton btnGoBack, botonPersonaje;
@@ -45,18 +45,13 @@ public class Floor2_LibraryScreen extends JPanel {
         add(btnGoBack);
         
         
-        // Label para la imagen del personaje
-        JLabel lblCharacterImage = new JLabel();
-        lblCharacterImage.setBounds(576, 246, 341, 488);
-        Image resizedImage = characterImage.getImage().getScaledInstance(lblCharacterImage.getWidth(), lblCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
-        ImageIcon resizedIcon = new ImageIcon(resizedImage);
-        lblCharacterImage.setIcon(resizedIcon);
-        add(lblCharacterImage);
-        
-        
         //Personaje como boton
         botonPersonaje = new JButton();
-        botonPersonaje.setBounds(310, 328, 270, 396);
+        botonPersonaje.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        botonPersonaje.setBounds(49, 199, 259, 535);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -64,6 +59,15 @@ public class Floor2_LibraryScreen extends JPanel {
         botonPersonaje.setContentAreaFilled(false); // Hacer el fondo transparente
         // Añadir el botón al JFrame
         add(botonPersonaje);
+        
+        // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
+        ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor2_LibraryImg.jpg"));
+        JLabel lbleCharacterImage = new JLabel();
+        lbleCharacterImage.setSize(getSize());
+        Image eresizedImage = echaracterImage.getImage().getScaledInstance(lbleCharacterImage.getWidth(), lbleCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon eresizedIcon = new ImageIcon(eresizedImage);
+        lbleCharacterImage.setIcon(eresizedIcon);
+        add(lbleCharacterImage);
         
         try {
             // Cargar la imagen desde un archivo

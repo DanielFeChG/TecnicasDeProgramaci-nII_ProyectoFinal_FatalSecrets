@@ -18,8 +18,7 @@ public class Floor1_CafeteriaScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
-
+	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/WifeImg.png"));
 	private JLabel lblTite;
 	private JButton btnGoBack;
 	private JButton btnGoElevator;
@@ -63,7 +62,7 @@ public class Floor1_CafeteriaScreen extends JPanel {
 
 		// Personaje como botón
 		botonPersonaje = new JButton();
-		botonPersonaje.setBounds(558, 219, 266, 347);
+		botonPersonaje.setBounds(734, 302, 223, 432);
 		Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
 		botonPersonaje.setIcon(iconoEscalado);
@@ -72,6 +71,24 @@ public class Floor1_CafeteriaScreen extends JPanel {
 
 		// Añadir el botón al JPanel
 		add(botonPersonaje);
+		
+        // Label para el polcía 
+        ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/PoliceManImg.png"));
+        JLabel lblCharacterImage = new JLabel();
+        lblCharacterImage.setBounds(547, 291, 215, 443);
+        Image resizedImage = characterImage.getImage().getScaledInstance(lblCharacterImage.getWidth(), lblCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+        lblCharacterImage.setIcon(resizedIcon);
+        add(lblCharacterImage);
+		
+        // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
+        ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor1_CafeteriaImg.jpg"));
+        JLabel lbleCharacterImage = new JLabel();
+        lbleCharacterImage.setSize(getSize());
+        Image eresizedImage = echaracterImage.getImage().getScaledInstance(lbleCharacterImage.getWidth(), lbleCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon eresizedIcon = new ImageIcon(eresizedImage);
+        lbleCharacterImage.setIcon(eresizedIcon);
+        add(lbleCharacterImage);
 
 		try {
 			// Cargar la imagen desde un archivo

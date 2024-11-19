@@ -18,7 +18,7 @@ public class Floor8_ReceptionScreen extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private BufferedImage backgroundImage;
-    private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+    private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ReceptionistImg.png"));
 
     // Declaración de elementos fuera del constructor
     private JButton btnGoBack;
@@ -33,7 +33,7 @@ public class Floor8_ReceptionScreen extends JPanel {
         lblTite = new JLabel("Recepcion");
         lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
         lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(406, 666, 130, 58);
+        lblTite.setBounds(406, 666, 176, 58);
         add(lblTite);
         
         btnGoBack = new JButton("Volver al ascensor");
@@ -49,7 +49,11 @@ public class Floor8_ReceptionScreen extends JPanel {
         
         // Personaje como botón
         botonPersonaje = new JButton();
-        botonPersonaje.setBounds(503, 245, 270, 396);
+        botonPersonaje.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        botonPersonaje.setBounds(378, 63, 186, 290);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -57,6 +61,15 @@ public class Floor8_ReceptionScreen extends JPanel {
         botonPersonaje.setContentAreaFilled(false); // Hacer el fondo transparente
         // Añadir el botón al JFrame
         add(botonPersonaje);
+        
+        // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
+        ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor8_ReceptionImg.jpg"));
+        JLabel lbleCharacterImage = new JLabel();
+        lbleCharacterImage.setSize(getSize());
+        Image eresizedImage = echaracterImage.getImage().getScaledInstance(lbleCharacterImage.getWidth(), lbleCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon eresizedIcon = new ImageIcon(eresizedImage);
+        lbleCharacterImage.setIcon(eresizedIcon);
+        add(lbleCharacterImage);
         
         try {
             // Cargar la imagen desde un archivo
