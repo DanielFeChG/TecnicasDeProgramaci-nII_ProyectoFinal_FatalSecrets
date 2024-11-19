@@ -19,7 +19,7 @@ public class Floor6_KioskScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ChefImg.png"));
+	private ImageIcon characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ChefImg.png"));
     private JButton botonPersonaje;
     private JButton btnGoBack;
     private JLabel lblTite;

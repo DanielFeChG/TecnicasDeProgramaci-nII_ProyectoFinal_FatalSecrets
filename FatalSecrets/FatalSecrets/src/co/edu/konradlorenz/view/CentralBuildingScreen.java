@@ -19,7 +19,10 @@ public class CentralBuildingScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/securityGuardImg.png"));
+	private ImageIcon characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/securityGuardImg.png"));
+	private ImageIcon leftBackImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
+	private ImageIcon leftImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftImg.png"));
+	Image imagenEscalada;
 	
 	private JButton btnGoBack, botonPersonaje;
 	
@@ -45,10 +48,17 @@ public class CentralBuildingScreen extends JPanel {
 		});
         add(btnGoCafeteria); 
         
+        
         JButton btnGoGym;
         btnGoGym = new JButton("");
         btnGoGym.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoGym.setBounds(39, 562, 289, 58);
+        btnGoGym.setBounds(27, 354, 98, 44);
+        imagenEscalada = leftImage.getImage().getScaledInstance(btnGoGym.getWidth(), btnGoGym.getHeight(), Image.SCALE_SMOOTH);
+        leftImage = new ImageIcon(imagenEscalada);
+        btnGoGym.setIcon(leftImage);
+        btnGoGym.setBorderPainted(false);
+        btnGoGym.setContentAreaFilled(false);
+        btnGoGym.setToolTipText("Gimnasio");
         btnGoGym.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -57,10 +67,16 @@ public class CentralBuildingScreen extends JPanel {
 		});
         add(btnGoGym); 
         
+        
         JButton btnBack;
         btnBack = new JButton();
         btnBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnBack.setBounds(39, 640, 243, 58);
+        btnBack.setBounds(100, 646, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnBack.getWidth(), btnBack.getHeight(), Image.SCALE_SMOOTH);
+        leftBackImage = new ImageIcon(imagenEscalada);
+        btnBack.setIcon(leftBackImage);
+        btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
         btnBack.setToolTipText("Volver a la Oficina");
         btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -69,6 +85,16 @@ public class CentralBuildingScreen extends JPanel {
 			}
 		});
         add(btnBack); 
+        
+        //Personaje como boton
+        botonPersonaje = new JButton();
+        botonPersonaje.setBounds(831, 420, 113, 246);
+        imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
+        characterImage = new ImageIcon(imagenEscalada);
+        botonPersonaje.setIcon(characterImage);
+        botonPersonaje.setBorderPainted(false); // Quitar el borde
+        botonPersonaje.setContentAreaFilled(false); // Hacer el fondo transparente
+        
         try {
             // Cargar la imagen desde un archivo
         	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/CentralBuildingImg.jpg"));
@@ -76,14 +102,6 @@ public class CentralBuildingScreen extends JPanel {
             e.printStackTrace();
         }
         
-        //Personaje como boton
-        botonPersonaje = new JButton();
-        botonPersonaje.setBounds(831, 420, 113, 246);
-        Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
-        botonPersonaje.setIcon(iconoEscalado);
-        botonPersonaje.setBorderPainted(false); // Quitar el borde
-        botonPersonaje.setContentAreaFilled(false); // Hacer el fondo transparente
      // Agregar ActionListener para definir la acción al hacer clic en el botón
         botonPersonaje.addActionListener(new ActionListener() {
             @Override
