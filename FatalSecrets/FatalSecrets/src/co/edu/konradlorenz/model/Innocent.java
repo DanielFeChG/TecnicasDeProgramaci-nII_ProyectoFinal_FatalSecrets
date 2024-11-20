@@ -1,39 +1,42 @@
 package co.edu.konradlorenz.model;
 
+import java.awt.Color;
+
 public class Innocent extends NPC{
 	
 	private ObjectClue pista;
-	private ObjectClue pruebaInoncente;
 	
-	public Innocent(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo,ObjectClue pista, ObjectClue pruebaInoncente) {
-		super(nombre, descripcion, imagen, testimonio, acertijo);
-		this.pista = pista;
-		this.pruebaInoncente = pruebaInoncente;
-	}//Este se usa para un inocente normal
-	
-	public Innocent(String nombre, String descripcion, String imagen, String testimonio, ObjectClue pista, ObjectClue pruebaInoncente) {
-		super(nombre, descripcion, imagen, testimonio);
-		this.pista = pista;
-		this.pruebaInoncente = pruebaInoncente;
-	}//Este se usa para un inocente sin acertijo
-	
-	public Innocent(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo) {
-		super(nombre, descripcion, imagen, testimonio, acertijo);
+	public Innocent(String nombre, String descripcion, String imagen, Color color) {
+		super(nombre, descripcion, imagen, color);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Innocent(String nombre, String descripcion, String imagen, String testimonio) {
-		super(nombre, descripcion, imagen, testimonio);
+	public Innocent(String nombre, String descripcion, String imagen, String testimonio, Color color) {
+		super(nombre, descripcion, imagen, testimonio, color);
 		// TODO Auto-generated constructor stub
 	}
-	public Innocent(String nombre, String descripcion, String imagen) {
-		super(nombre, descripcion, imagen);
+
+	public Innocent(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo, Color color) {
+		super(nombre, descripcion, imagen, testimonio, acertijo, color);
 		// TODO Auto-generated constructor stub
+	}
+
+	public Innocent(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo, Color color, ObjectClue pista) {
+		super(nombre, descripcion, imagen, testimonio, acertijo, color);
+		this.pista = pista;
+	}
+	
+	public ObjectClue getPista() {
+		return pista;
+	}
+
+	public void setPista(ObjectClue pista) {
+		this.pista = pista;
 	}
 
 	@Override
 	public String toString() {
-		return "Innocent [pista=" + pista + ", pruebaInoncente=" + pruebaInoncente + "]";
+		return "Innocent [pista=" + pista + "]";
 	}
 	
 }

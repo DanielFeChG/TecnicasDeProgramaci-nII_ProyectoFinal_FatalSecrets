@@ -1,26 +1,31 @@
 package co.edu.konradlorenz.model;
 
+import java.awt.Color;
+
 public class NPC extends EntityGame {
 	
 	private String testimonio;
 	private Riddle acertijo;
-
-	public NPC(String nombre, String descripcion, String imagen) {
-		super(nombre, descripcion, imagen);
-		// TODO Auto-generated constructor stub
-	}
+	private Color color;
 	
-	public NPC(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo) {
+	public NPC(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo, Color color) {
 		super(nombre, descripcion, imagen);
 		this.testimonio = testimonio;
 		this.acertijo = acertijo;
+		this.color = color;
 	}
 
-	public NPC(String nombre, String descripcion, String imagen, String testimonio) { //NPC sin acertijo
+	public NPC(String nombre, String descripcion, String imagen, String testimonio, Color color) { //NPC sin acertijo
 		super(nombre, descripcion, imagen);
 		this.testimonio = testimonio;
+		this.color = color;
 	}
 
+	public NPC(String nombre, String descripcion, String imagen, Color color) {
+		super(nombre, descripcion, imagen);
+		this.color = color;
+	}
+	
 	public String getTestimonio() {
 		return testimonio;
 	}
@@ -37,6 +42,14 @@ public class NPC extends EntityGame {
 		this.acertijo = acertijo;
 	}
 
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
 	@Override
 	public void interactuar(String accion) {
 		// TODO Auto-generated method stub
@@ -45,7 +58,7 @@ public class NPC extends EntityGame {
 
 	@Override
 	public String toString() {
-		return "NPC [testimonio=" + testimonio + ", acertijo=" + acertijo + "]";
+		return "NPC [testimonio=" + testimonio + ", acertijo=" + acertijo + ", color=" + color + "]";
 	}
 	
 }

@@ -1,5 +1,6 @@
 package co.edu.konradlorenz.controler;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -109,15 +110,15 @@ public class GameController implements ActionListener{
 				+ "Sandra – No, únicamente hice la llamada de emergencia, en el momento no pensé en alertar a alguien más.\r\n"
 				+ "Policía – Muy bien, y dígame… ¿Vio usted algo sospechoso o relevante en la escena del crimen?\r\n"
 				+ "Sandra – No, solo encontré un carnet estudiantil sobre su escritorio. Es justo este.\r\n"
-				+ "", null, null);
-		NPC estudiante = new Innocent("Daniel", "Estudiante", "/imgEstudiante", "Fuí a la oficina del decano porque...", act1Estudiante, null, null);
-		NPC conserje = new Innocent("Fabian", "Conserje", "/imgConserje", "He estado haciendo el aseo de los baños de todos los pisos...", act2Conserje, null, null);
-		NPC instructura = new Innocent("Natalia", "Instructora del gimnasio", "/imgInstructora", "Como todos los dias he estado unicamente en el giimnasio...", act3Instructora, null, null);
-		NPC bibliotecario = new Innocent("Uriel", "Bibliotecario", "/imgBibliotecario", "Estaba organizando uns libros que devolvieron.. pero kmlkf sdopef eefefmrlk m kefmwkemfkewmo kefmefmwolf oef ef i efmwekmlmewflnwef ked knmlkwefm este es el final", act4Bibliotecario, null, null);
-		NPC profesora = new Innocent("Lucía", "Profesora", "/imgProfesora", "Estaba reemplazando al profesor en la clase de programación pq no llegó...", act5Profesora, null, null);
-		NPC recepcionista = new Innocent("Rocio", "Recepcionista de decanatura", "/imgRecepcionista", "Todo el día he estado en mi puesto de trabajo...", act6Recepcionista, null, null);
-		NPC vigilante = new Innocent("Adriana", "Vigilante", "/imgVigilante", "Acabo de llegar a mi turno...", act8Vigilante, null, null);
-		NPC cocinero = new Murder("Oscar", "Cocinero de la terraza del sexto piso", "/imgCocinero", "Hoy he estado en la caseta durante todo el día...", act7Cocinero, null);
+				+ "", Color.RED);
+		NPC estudiante = new Innocent("Daniel", "Estudiante", "/imgEstudiante", "Fuí a la oficina del decano porque...", act1Estudiante, Color.BLUE);
+		NPC conserje = new Innocent("Fabian", "Conserje", "/imgConserje", "He estado haciendo el aseo de los baños de todos los pisos...", act2Conserje, Color.GREEN);
+		NPC instructura = new Innocent("Natalia", "Instructora del gimnasio", "/imgInstructora", "Como todos los dias he estado unicamente en el giimnasio...", act3Instructora, Color.YELLOW);
+		NPC bibliotecario = new Innocent("Uriel", "Bibliotecario", "/imgBibliotecario", "Estaba organizando uns libros que devolvieron.. pero kmlkf sdopef eefefmrlk m kefmwkemfkewmo kefmefmwolf oef ef i efmwekmlmewflnwef ked knmlkwefm este es el final", act4Bibliotecario, Color.PINK);
+		NPC profesora = new Innocent("Lucía", "Profesora", "/imgProfesora", "Estaba reemplazando al profesor en la clase de programación pq no llegó...", act5Profesora, Color.CYAN);
+		NPC recepcionista = new Innocent("Rocio", "Recepcionista de decanatura", "/imgRecepcionista", "Todo el día he estado en mi puesto de trabajo...", act6Recepcionista, Color.MAGENTA);
+		NPC vigilante = new Innocent("Adriana", "Vigilante", "/imgVigilante", "Acabo de llegar a mi turno...", act8Vigilante, Color.ORANGE);
+		NPC cocinero = new Murder("Oscar", "Cocinero de la terraza del sexto piso", "/imgCocinero", "Hoy he estado en la caseta durante todo el día...", act7Cocinero, Color.BLACK);
 		
 		// ------------------------------------ CREAR UBICACIONES ------------------------------------
 		
@@ -184,7 +185,7 @@ public class GameController implements ActionListener{
 	}
 
 	public void showTestimonyDialog(NPC npc) {
-	    TestimonyDialog testimonyDialog = new TestimonyDialog(objGameWindow, npc.getNombre(),npc.getTestimonio());
+	    TestimonyDialog testimonyDialog = new TestimonyDialog(objGameWindow, npc);
 	    testimonyDialog.setVisible(true);
 	}
 

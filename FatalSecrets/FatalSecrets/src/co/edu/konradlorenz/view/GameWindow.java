@@ -63,14 +63,10 @@ public class GameWindow extends JFrame {
 	public void updateScreen(JPanel newScreen) {  //Método que actualiza la pantalla al cambiar de lugar, cambia el JPanel que muestra el JFrame
         remove(currentScreen);// Elimina el panel actual
         currentScreen = newScreen;// Asigna el nuevo panel
-        add(currentScreen, BorderLayout.CENTER);// Agrega el nuevo panel y actualiza la ventana
+        add(newScreen, BorderLayout.CENTER);// Agrega el nuevo panel y actualiza la ventana
         revalidate();  // Revalidar el contenedor para que se actualice
         repaint();     // Redibuja el JFrame
     }
-
-	public void mostrarTestimonio(String titulo, String testimonio, String clueImg) {
-		//interactionJDialog = newR
-	}
 	
 	public JPanel getCurrentScreen() {
 		return currentScreen;
