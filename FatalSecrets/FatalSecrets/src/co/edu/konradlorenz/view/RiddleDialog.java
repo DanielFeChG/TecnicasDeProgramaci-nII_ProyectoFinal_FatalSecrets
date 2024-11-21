@@ -21,10 +21,6 @@ public class RiddleDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RiddleDialog() {
-		this(null, "DANIEL", "saber dia", "imgAct");
-		//this(null, "SOFIA", "NECESITO SABER MI CODIGO"); //Constructor para Acertijo con imagen
-	}
 	
 	public RiddleDialog(GameWindow gameWindow, String titulo, String acertijo) {
 		setTitle("Interacción con NPC");
@@ -60,45 +56,7 @@ public class RiddleDialog extends JDialog {
         lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
         lblResultado.setBounds(127, 249, 98, 14);
         getContentPane().add(lblResultado);
-        
-        //setVisible(true);
 
-	}
-	
-	public RiddleDialog(GameWindow gameWindow, String titulo, String acertijo, String imgAcertijo) {
-		setTitle("Interacción con NPC");
-        setSize(400, 300);
-        setLocationRelativeTo(gameWindow);
-        setModal(true);
-        setResizable(false);
-        getContentPane().setLayout(null);
-        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-
-        
-        lblTitulo = new JLabel(titulo);
-        lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-        lblTitulo.setBounds(139, 10, 98, 31);
-        getContentPane().add(lblTitulo);
-        
-        respuestaField = new JTextField();
-        respuestaField.setBounds(106, 220, 146, 19);
-        getContentPane().add(respuestaField);
-        respuestaField.setColumns(10);
-        
-        checkButton = new JButton("Comprobar");
-        checkButton.setBounds(261, 219, 85, 21);
-        getContentPane().add(checkButton);
-        
-        lblacertijo = new JLabel("<html><center>"+acertijo+"</html>");
-        lblacertijo.setBounds(38, 52, 294, 143);
-        lblacertijo.setHorizontalAlignment(SwingConstants.CENTER);
-        getContentPane().add(lblacertijo);
-        
-        lblResultado = new JLabel("");
-        lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
-        lblResultado.setBounds(127, 249, 98, 14);
-        getContentPane().add(lblResultado);
 	}
 	
     public String getAnswer() {

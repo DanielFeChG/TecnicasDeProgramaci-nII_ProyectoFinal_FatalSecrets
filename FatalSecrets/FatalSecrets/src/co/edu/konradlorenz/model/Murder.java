@@ -6,31 +6,28 @@ public class Murder extends NPC{
 	
 	private String declaración;
 
-	public Murder(String nombre, String descripcion, String imagen, Color color) {
-		super(nombre, descripcion, imagen, color);
+	public Murder(String nombre, String descripcion, String testimonio, ObjectClue pista, Color color) {
+		super(nombre, descripcion, testimonio, pista, color);
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public Murder(String nombre, String descripcion, String imagen, String testimonio, Color color) {
-		super(nombre, descripcion, imagen, testimonio, color);
+	public Murder(String nombre, String descripcion, String testimonio, Riddle acertijo, ObjectClue pista,
+			Color color) {
+		super(nombre, descripcion, testimonio, acertijo, pista, color);
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public Murder(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo, Color color) {
-		super(nombre, descripcion, imagen, testimonio, acertijo, color);
+	public Murder(String nombre, String descripcion) {
+		super(nombre, descripcion);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Murder(String nombre, String descripcion, String imagen, String testimonio, Riddle acertijo, Color color,
+	public Murder(String nombre, String descripcion, String testimonio, Riddle acertijo, ObjectClue pista, Color color,
 			String declaración) {
-		super(nombre, descripcion, imagen, testimonio, acertijo, color);
+		super(nombre, descripcion, testimonio, acertijo, pista, color);
 		this.declaración = declaración;
 	}
-
+	
 	public String getDeclaración() {
 		return declaración;
 	}
@@ -44,5 +41,4 @@ public class Murder extends NPC{
 		return "Murder [declaración=" + declaración + "]";
 	}
 
-	
 }

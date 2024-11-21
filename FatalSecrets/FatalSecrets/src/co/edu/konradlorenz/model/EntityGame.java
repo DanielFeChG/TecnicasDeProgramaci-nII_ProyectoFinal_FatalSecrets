@@ -4,12 +4,10 @@ public abstract class EntityGame implements Interactable {
 	
 	private String nombre;
 	private String descripcion;
-	private String imagen;
 	
-	protected EntityGame(String nombre, String descripcion, String imagen) {
+	protected EntityGame(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.imagen = imagen;
 	}
 
 	public String getNombre() {
@@ -28,19 +26,8 @@ public abstract class EntityGame implements Interactable {
 		this.descripcion = descripcion;
 	}
 
-	public String getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
-
 	@Override
 	public String toString() {
-		return "EntityGame [nombre=" + nombre + ", descripcion=" + descripcion + ", imagen=" + imagen + "]";
+		return "EntityGame [nombre=" + nombre + ", descripcion=" + descripcion + "]";
 	}
-
-	
-	
 }
