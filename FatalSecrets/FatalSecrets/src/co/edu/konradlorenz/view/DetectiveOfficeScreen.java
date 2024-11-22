@@ -42,7 +42,7 @@ public class DetectiveOfficeScreen extends JPanel {
         add(btnGoBuilding); 
         try {
             // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/detectiveOfficeTemp.jpg"));
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/detectiveOfficeImg.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

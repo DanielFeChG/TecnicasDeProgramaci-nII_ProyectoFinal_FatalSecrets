@@ -19,8 +19,7 @@ public class Floor5_Classroom501NScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/TeacherImg.png"));
-	
+	private ImageIcon characterImage ;
 	//Delcaracion de elementos
     private JButton botonPersonaje;
     private JButton btnGoBack;
@@ -28,7 +27,9 @@ public class Floor5_Classroom501NScreen extends JPanel {
     
     public Floor5_Classroom501NScreen(GameWindow gameWindow) {
         setSize(1004, 734);
-        setLayout(null);
+          setLayout(null);
+        
+        cargarImagen();
         
         // Inicialización de elementos en el constructor
         lblTite = new JLabel("Salón 501-N");
@@ -71,12 +72,18 @@ public class Floor5_Classroom501NScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
         
-        try {
-            // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
+    }
+    public void cargarImagen() {
+    	 try {
+             // Cargar la imagen desde un archivo
+             backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
+             characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/TeacherImg.png"));
+         	
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+    	
     }
 
  // Sobrescribir el método paintComponent para dibujar el fondo

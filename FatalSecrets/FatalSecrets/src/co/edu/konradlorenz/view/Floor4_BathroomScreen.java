@@ -19,7 +19,7 @@ public class Floor4_BathroomScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/JanitorImg.png"));
+	private ImageIcon characterImage ;
 	private JLabel lblTite;
 	private JButton btnGoBack;
 	private JButton botonPersonaje;
@@ -28,12 +28,13 @@ public class Floor4_BathroomScreen extends JPanel {
 	public Floor4_BathroomScreen(GameWindow gameWindow) {
 		setSize(1004, 734);
 		setLayout(null);
+		cargarImagen();
 
 		// Inicialización de los elementos declarados fuera del constructor
 		lblTite = new JLabel("Baño 4 Piso");
 		lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
 		lblTite.setForeground(Color.BLACK);
-		lblTite.setBounds(407, 666, 166, 58);
+		lblTite.setBounds(396, 665, 166, 58);
 		add(lblTite);
 
 		btnGoBack = new JButton("Volver al ascensor");
@@ -70,13 +71,18 @@ public class Floor4_BathroomScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
 		
-		try {
-			// Cargar la imagen desde un archivo
-			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor4_BathroomImg.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
+	public void cargarImagen() {try {
+		// Cargar la imagen desde un archivo
+		backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor4_BathroomImg.jpg"));
+		characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/JanitorImg.png"));
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+		
+	}
+	
 	
  // Sobrescribir el método paintComponent para dibujar el fondo
     @Override

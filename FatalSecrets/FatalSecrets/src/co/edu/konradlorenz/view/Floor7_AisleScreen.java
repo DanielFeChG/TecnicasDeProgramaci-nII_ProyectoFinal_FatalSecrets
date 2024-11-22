@@ -18,7 +18,7 @@ public class Floor7_AisleScreen extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+	private ImageIcon ObjectImage ;
 	
 	private JLabel lblObjectImage;
     private JButton btnGoBack;
@@ -28,6 +28,7 @@ public class Floor7_AisleScreen extends JPanel {
     public Floor7_AisleScreen(GameWindow gameWindow) {
         setSize(1004, 734);
         setLayout(null);
+        cargarImagen();
         
         lblTite = new JLabel("Pasillo 7° piso");
         lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
@@ -48,8 +49,8 @@ public class Floor7_AisleScreen extends JPanel {
         
         // Label para la imagen del trapero
         lblObjectImage = new JLabel();
-        lblObjectImage.setBounds(403, 244, 39, 258);
-        Image resizedImage = characterImage.getImage().getScaledInstance(lblObjectImage.getWidth(), lblObjectImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        lblObjectImage.setBounds(0, 303, 56, 232);
+        Image resizedImage = ObjectImage.getImage().getScaledInstance(lblObjectImage.getWidth(), lblObjectImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
         lblObjectImage.setIcon(resizedIcon);
         add(lblObjectImage);
@@ -65,12 +66,17 @@ public class Floor7_AisleScreen extends JPanel {
         
 
         
-        try {
-            // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor7_AisleImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
+    }
+    public void cargarImagen() {
+    	 try {
+             // Cargar la imagen desde un archivo
+             backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor7_AisleImg.jpg"));
+             ObjectImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/MopImage.png"));
+             } catch (IOException e) {
+                 e.printStackTrace();
+             }
+    	
     }
 
     // Sobrescribir el método paintComponent para dibujar el fondo

@@ -18,7 +18,7 @@ public class Floor1_CafeteriaScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/WifeImg.png"));
+	private ImageIcon characterImage; 
 	private JLabel lblTite;
 	private JButton btnGoBack;
 	private JButton btnGoElevator;
@@ -28,7 +28,9 @@ public class Floor1_CafeteriaScreen extends JPanel {
 	 * Constructor del panel.
 	 */
 	public Floor1_CafeteriaScreen(GameWindow gameWindow) {
-
+		
+		cargarImagen();
+		
 		setSize(1004, 734);
 		setLayout(null);
 
@@ -90,12 +92,7 @@ public class Floor1_CafeteriaScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
 
-		try {
-			// Cargar la imagen desde un archivo
-			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor1_CafeteriaImg.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
  // Sobrescribir el método paintComponent para dibujar el fondo
@@ -107,7 +104,18 @@ public class Floor1_CafeteriaScreen extends JPanel {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
     }
-
+public void cargarImagen(){
+	try {
+		// Cargar la imagen desde un archivo
+		backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor1_CafeteriaImg.jpg"));
+		characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/WifeImg.png"));
+		
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	
+	
+}
 	public BufferedImage getBackgroundImage() {
 		return backgroundImage;
 	}

@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -18,6 +20,8 @@ public class StartScreen extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
+	private ImageIcon tituloImg;
+	private JLabel lblTituloJuego;
 	
 
     public StartScreen(GameWindow gameWindow) {
@@ -26,12 +30,22 @@ public class StartScreen extends JPanel{
     	setSize(1004,734);
         setLayout(null);
         
+        cargarImagen();
+        
+        // Label para la imagen del titulo del juego
+        lblTituloJuego = new JLabel();
+        lblTituloJuego.setBounds(414, 121, 526, 112);
+        Image resizedImage = tituloImg.getImage().getScaledInstance(lblTituloJuego.getWidth(), lblTituloJuego.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+        lblTituloJuego.setIcon(resizedIcon);
+        add(lblTituloJuego);
+        
         //JLABEL TITULO
-        JLabel lblTite = new JLabel("Menú Principal");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.WHITE);
-        lblTite.setBounds(577, 244, 265, 58);
-        add(lblTite); // Agregar al JPanel
+        JLabel lblTitle = new JLabel("Menú Principal");
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(577, 244, 265, 58);
+        add(lblTitle); // Agregar al JPanel
 
         //BOTÓN PLAY GAME
         JButton btnPlayGame;
@@ -50,6 +64,12 @@ public class StartScreen extends JPanel{
         JButton btnHowToPlay = new JButton("Cómo jugar");
         btnHowToPlay.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
         btnHowToPlay.setBounds(584, 410, 243, 58);
+        btnHowToPlay.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameWindow.updateScreen(gameWindow.getHowToPlayScreen());
+			}
+		});
         add(btnHowToPlay);
         
        //BOTÓN CRÉDITOS
@@ -71,14 +91,19 @@ public class StartScreen extends JPanel{
         add(btnExit);
         
         
-        //EXCEPCION CARGA DE ARCHIVOS
-        try {
+        
+        
+        
+    }
+    public void cargarImagen() {
+    	try {
             // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Captura de pantalla 2024-11-11 135908.png"));
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/StartScreenImg.jpg"));
+        	tituloImg = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Assets/titleImg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+    	
     }
 
 

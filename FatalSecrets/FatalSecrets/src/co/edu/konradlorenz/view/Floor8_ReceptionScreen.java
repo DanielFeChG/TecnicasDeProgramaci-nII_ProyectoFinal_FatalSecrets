@@ -18,7 +18,7 @@ public class Floor8_ReceptionScreen extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private BufferedImage backgroundImage;
-    private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ReceptionistImg.png"));
+    private ImageIcon characterImage ;
 
     // Declaración de elementos fuera del constructor
     private JButton btnGoBack;
@@ -28,6 +28,7 @@ public class Floor8_ReceptionScreen extends JPanel {
     public Floor8_ReceptionScreen(GameWindow gameWindow) {
         setSize(1004, 734);
         setLayout(null);
+        cargarImagen();
 
         // Inicialización de elementos en el constructor
         lblTite = new JLabel("Recepcion");
@@ -71,13 +72,19 @@ public class Floor8_ReceptionScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
         
-        try {
-            // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor8_ReceptionImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
     }
+    public void cargarImagen() {
+    	 try {
+             // Cargar la imagen desde un archivo
+             backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor8_ReceptionImg.jpg"));
+             characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ReceptionistImg.png"));
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+    	
+    }
+    
 
     // Sobrescribir el método paintComponent para dibujar el fondo
     @Override

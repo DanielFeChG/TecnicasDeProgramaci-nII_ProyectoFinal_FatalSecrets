@@ -19,7 +19,7 @@ public class Floor3_ComputerRoomScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/StudentImg.png"));
+	private ImageIcon characterImage ;
 	private JLabel lblTite;
 	private JButton btnGoBack;
 	private JButton botonPersonaje;
@@ -30,6 +30,8 @@ public class Floor3_ComputerRoomScreen extends JPanel {
 	public Floor3_ComputerRoomScreen(GameWindow gameWindow) {
 		setSize(1004, 734);
 		setLayout(null);
+		
+		cargarIamgen();
 
 		// Inicialización de los elementos declarados fuera del constructor
 		lblTite = new JLabel("Salón de sistemas");
@@ -68,14 +70,18 @@ public class Floor3_ComputerRoomScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
 		
-		try {
-			// Cargar la imagen desde un archivo
-			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor3_ComputerRoomImg.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
+	public void cargarIamgen() {try {
+		// Cargar la imagen desde un archivo
+		backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor3_ComputerRoomImg.jpg"));
+		characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/StudentImg.png"));
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+		
+	}
  // Sobrescribir el método paintComponent para dibujar el fondo
     @Override
     protected void paintComponent(Graphics g) {

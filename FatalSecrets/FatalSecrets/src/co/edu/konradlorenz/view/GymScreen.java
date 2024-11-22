@@ -18,8 +18,7 @@ public class GymScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/GymInstructorImg.png"));
-	
+	private ImageIcon characterImage ;
 	private JLabel lblTite;
 	private JButton btnGoBack;
 	private JButton botonPersonaje;
@@ -30,6 +29,7 @@ public class GymScreen extends JPanel {
 	public GymScreen(GameWindow gameWindow) {
 		setSize(1004, 734);
 		setLayout(null);
+		cargarImagen();
 
 		// Inicialización de los elementos declarados fuera del constructor
 		lblTite = new JLabel("Gimnasio");
@@ -72,12 +72,18 @@ public class GymScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
 		
+		
+	}
+	public void cargarImagen() {
 		try {
 			// Cargar la imagen desde un archivo
 			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/GymImg.jpg"));
+			characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/GymInstructorImg.png"));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	 // Sobrescribir el método paintComponent para dibujar el fondo
     @Override

@@ -18,12 +18,14 @@ public class Floor2_LibraryScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/LibrarianImg.png"));
-	
+	private ImageIcon characterImage ;
 	//Delcaracion de elementos
 	private JButton btnGoBack, botonPersonaje;
 
 	public Floor2_LibraryScreen(GameWindow gameWindow) {
+		
+		cargarImagen();
+		
 		setSize(1004,734);
         setLayout(null);
         JLabel lblTite = new JLabel("Biblioteca");
@@ -69,15 +71,18 @@ public class Floor2_LibraryScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
         
-        try {
-            // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor2_LibraryImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
     }
 
-	
+	public void cargarImagen() { 
+		try {
+        // Cargar la imagen desde un archivo
+    	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor2_LibraryImg.jpg"));
+    	characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/LibrarianImg.png"));
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	public JButton getBtnGoBack() {
 		return btnGoBack;

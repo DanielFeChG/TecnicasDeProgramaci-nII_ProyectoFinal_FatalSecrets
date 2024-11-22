@@ -19,7 +19,7 @@ public class Floor6_TerraceScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+	private ImageIcon characterImage ;
 	
     private JButton botonPersonaje;
     private JButton btnGoKiosk;
@@ -29,6 +29,8 @@ public class Floor6_TerraceScreen extends JPanel {
     public Floor6_TerraceScreen(GameWindow gameWindow) {
         setSize(1004, 734);
         setLayout(null);
+        
+        cargarImagen();
         
         // Inicialización de elementos en el constructor
         lblTite = new JLabel("Terraza");
@@ -78,12 +80,17 @@ public class Floor6_TerraceScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
         
-        try {
-            // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_TerraceImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
+    }
+    public void cargarImagen() { try {
+        // Cargar la imagen desde un archivo
+        backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_TerraceImg.jpg"));
+        characterImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/ju.png"));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    	
+    	
     }
 
  // Sobrescribir el método paintComponent para dibujar el fondo

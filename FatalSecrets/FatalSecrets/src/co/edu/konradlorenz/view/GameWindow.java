@@ -12,6 +12,7 @@ public class GameWindow extends JFrame {
 	
 	private JPanel currentScreen; // Panel que mostrará la pantalla actual
 	private StartScreen startScreen;
+	private HowToPlayScreen howToPlayScreen;
 	private DetectiveOfficeScreen detectiveOffice;
 	private CentralBuildingScreen centralBuilding;
 	private ElevatorScreen elevator;
@@ -34,6 +35,7 @@ public class GameWindow extends JFrame {
 	private void initComponents() {
 		//CREAR JPANELs
 		startScreen = new StartScreen(this);
+		howToPlayScreen = new HowToPlayScreen(this);
 		detectiveOffice = new DetectiveOfficeScreen(this);
 		centralBuilding = new CentralBuildingScreen(this);
 		elevator = new ElevatorScreen(this);
@@ -82,6 +84,14 @@ public class GameWindow extends JFrame {
 
 	public void setStartScreen(StartScreen startScreen) {
 		this.startScreen = startScreen;
+	}
+
+	public HowToPlayScreen getHowToPlayScreen() {
+		return howToPlayScreen;
+	}
+
+	public void setHowToPlayScreen(HowToPlayScreen howToPlayScreen) {
+		this.howToPlayScreen = howToPlayScreen;
 	}
 
 	public DetectiveOfficeScreen getDetectiveOffice() {

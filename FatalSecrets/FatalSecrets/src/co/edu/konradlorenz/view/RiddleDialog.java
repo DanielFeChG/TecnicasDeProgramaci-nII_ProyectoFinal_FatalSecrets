@@ -39,12 +39,12 @@ public class RiddleDialog extends JDialog {
         getContentPane().add(lblTitulo);
         
         respuestaField = new JTextField();
-        respuestaField.setBounds(106, 220, 146, 19);
+        respuestaField.setBounds(96, 206, 146, 19);
         getContentPane().add(respuestaField);
         respuestaField.setColumns(10);
         
         checkButton = new JButton("Comprobar");
-        checkButton.setBounds(261, 219, 85, 21);
+        checkButton.setBounds(252, 206, 98, 21);
         getContentPane().add(checkButton);
         
         lblacertijo = new JLabel("<html><center>"+acertijo+"</html>");
@@ -54,7 +54,7 @@ public class RiddleDialog extends JDialog {
         
         lblResultado = new JLabel("");
         lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
-        lblResultado.setBounds(127, 249, 98, 14);
+        lblResultado.setBounds(106, 236, 131, 14);
         getContentPane().add(lblResultado);
 
 	}

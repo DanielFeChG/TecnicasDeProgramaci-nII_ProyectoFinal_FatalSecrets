@@ -19,7 +19,7 @@ public class Floor6_KioskScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ChefImg.png"));
+	private ImageIcon characterImage ;
     private JButton botonPersonaje;
     private JButton btnGoBack;
     private JLabel lblTite;
@@ -27,6 +27,7 @@ public class Floor6_KioskScreen extends JPanel {
 	public Floor6_KioskScreen(GameWindow gameWindow) {
 		setSize(1004, 734);
         setLayout(null);
+        cargarImagen();
         
         // Inicialización de elementos en el constructor
         lblTite = new JLabel("kiosko");
@@ -65,13 +66,19 @@ public class Floor6_KioskScreen extends JPanel {
         lbleCharacterImage.setIcon(eresizedIcon);
         add(lbleCharacterImage);
         
-        try {
-            // Cargar la imagen desde un archivo
-            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_KioskImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       
     }
+	
+	public void cargarImagen() {
+		 try {
+	            // Cargar la imagen desde un archivo
+	            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_KioskImg.jpg"));
+	            characterImage =  new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ChefImg.png"));
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		
+	}
 
  // Sobrescribir el método paintComponent para dibujar el fondo
     @Override

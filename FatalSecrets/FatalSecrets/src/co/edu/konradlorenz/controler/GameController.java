@@ -181,7 +181,7 @@ public class GameController implements ActionListener{
 		        showTestimonyDialog(npc);
 		        riddle.setEstado(true);
 		    } else {
-		        riddleDialog.setFeedback("Respuesta incorrecta. Intenta de nuevo.");
+		        riddleDialog.setFeedback("Respuesta incorrecta.");
 		    }
         });
 	    riddleDialog.setVisible(true);

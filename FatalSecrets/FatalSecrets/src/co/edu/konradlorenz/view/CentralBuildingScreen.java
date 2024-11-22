@@ -19,14 +19,20 @@ public class CentralBuildingScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/securityGuardImg.png"));
-	private ImageIcon leftBackImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
-	private ImageIcon leftImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftImg.png"));
+	private ImageIcon characterImage; 
+	private ImageIcon leftBackImage;
+	private ImageIcon leftImage ;
 	Image imagenEscalada;
 	
 	private JButton btnGoBack, botonPersonaje;
 	
+	
+	
+	
 	public CentralBuildingScreen(GameWindow gameWindow) {
+		
+		cargarImagenes();
+		
 		setSize(1004,734);
         setLayout(null);
         JLabel lblTite = new JLabel("Edificio central");
@@ -94,28 +100,7 @@ public class CentralBuildingScreen extends JPanel {
         botonPersonaje.setIcon(characterImage);
         botonPersonaje.setBorderPainted(false); // Quitar el borde
         botonPersonaje.setContentAreaFilled(false); // Hacer el fondo transparente
-        
-        try {
-            // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/CentralBuildingImg.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-     // Agregar ActionListener para definir la acción al hacer clic en el botón
-        botonPersonaje.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Acción al hacer clic en el botón
-                //JOptionPane.showMessageDialog(null, "¡Personaje seleccionado!");
-                // Aquí puedes agregar la lógica de interacción
-            	
-            }
-        });
-        // Añadir el botón al JFrame
         add(botonPersonaje);
-        
-        
         
         // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
         ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/CentralBuildingImg.jpg"));
@@ -139,7 +124,18 @@ public class CentralBuildingScreen extends JPanel {
         }
     }
 
-
+    public void cargarImagenes() {
+    	try {
+            // Cargar la imagen desde un archivo
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/CentralBuildingImg.jpg"));
+        	characterImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/securityGuardImg.png"));
+        	leftBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
+        	leftImage =  new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftImg.png"));
+        	
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 	public BufferedImage getBackgroundImage() {
 		return backgroundImage;
