@@ -62,12 +62,6 @@ public class NPC extends EntityGame {
 	}
 
 	@Override
-	public void interactuar(String accion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String toString() {
 		return "NPC [testimonio=" + testimonio + ", acertijo=" + acertijo + ", pista=" + pista + ", color=" + color
 				+ "]";

@@ -175,11 +175,10 @@ public class GameController implements ActionListener{
 	    RiddleDialog riddleDialog = new RiddleDialog(objGameWindow, npc.getDescripcion(), riddle.getPregunta());
 	    riddleDialog.addSubmitListener(e -> {
 		    String respuesta = riddleDialog.getAnswer();
-		    if (riddle.comprobarRespuesta(respuesta)) {
+		    if (riddle.comprobar(respuesta)) {
 		    	riddleDialog.setFeedback("¡Correcto!");
 		        riddleDialog.setVisible(false);
 		        showTestimonyDialog(npc);
-		        riddle.setEstado(true);
 		    } else {
 		        riddleDialog.setFeedback("Respuesta incorrecta. Intenta de nuevo.");
 		    }
@@ -204,7 +203,7 @@ public class GameController implements ActionListener{
 	    NPC npc = buttonNpcMap.get(sourceButton); // Obtiene el NPC asociado al botón
 
 	    if (npc != null) { // Verifica si el botón tiene un NPC asociado
-	        if (npc.getAcertijo() != null && !npc.getAcertijo().isEstado()) {
+	        if (npc.getAcertijo() != null && !npc.getAcertijo().isResuelto()) {
 	            showRiddleDialog(npc);
 	        } else {
 	            showTestimonyDialog(npc);
