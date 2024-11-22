@@ -1,6 +1,6 @@
 package co.edu.konradlorenz.model;
 
-public abstract class EntityGame implements Interactable {
+public abstract class EntityGame{
 	
 	private String nombre;
 	private String descripcion;

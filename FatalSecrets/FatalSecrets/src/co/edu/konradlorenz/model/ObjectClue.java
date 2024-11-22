@@ -16,12 +16,6 @@ public class ObjectClue extends EntityGame{
 		this.imagePath = imagePath;
 	}
 
-	@Override
-	public void interactuar(String accion) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public String getImagePath() {
 		return imagePath;
 	}

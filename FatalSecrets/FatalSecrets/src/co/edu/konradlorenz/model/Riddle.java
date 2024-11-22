@@ -1,6 +1,6 @@
 package co.edu.konradlorenz.model;
 
-public class Riddle {
+public class Riddle implements Verifiable {
 	
 	private String pregunta;
 	private String respuestaCorrecta;
@@ -28,22 +28,20 @@ public class Riddle {
 		this.respuestaCorrecta = respuestaCorrecta;
 	}
 
-	public boolean isEstado() {
-		return resuelto;
-	}
-
-	public void setEstado(boolean estado) {
-		this.resuelto = estado;
-	}
-
 	@Override
 	public String toString() {
 		return "Riddle [pregunta=" + pregunta + ", respuestaCorrecta=" + respuestaCorrecta + ", resuelto=" + resuelto + "]";
 	}
 
-	//Intentar resolver el acertijo
-	public boolean comprobarRespuesta(String respuesta) {
+	@Override
+	public boolean comprobar(String respuesta) {
 		resuelto = respuesta.equals(respuestaCorrecta);
 		return resuelto;
 	}
+
+	@Override
+	public boolean isResuelto() {
+		return resuelto;
+	}
+
 }
