@@ -98,7 +98,7 @@ public class StartScreen extends JPanel{
     public void cargarImagen() {
     	try {
             // Cargar la imagen desde un archivo
-        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/StartScreenImg.jpg"));
+        	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Assets/StartScreenImg.jpg"));
         	tituloImg = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Assets/titleImg.png"));
         } catch (IOException e) {
             e.printStackTrace();
