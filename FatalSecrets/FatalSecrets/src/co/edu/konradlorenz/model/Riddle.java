@@ -34,9 +34,19 @@ public class Riddle implements Verifiable {
 	}
 
 	@Override
-	public boolean comprobar(String respuesta) {
-		resuelto = respuesta.equals(respuestaCorrecta);
-		return resuelto;
+	public boolean comprobar(String respuesta) throws InvalidAnswerException{
+		
+		if (respuesta == null || respuesta.isEmpty()) {
+	        throw new InvalidAnswerException("La respuesta no puede estar vacía.");
+	    }
+	    if (!respuesta.matches("^[a-z0-9 ]+$")) {
+	        throw new InvalidAnswerException("La respuesta contiene caracteres inválidos.");
+	    }
+	    resuelto = respuesta.equals(respuestaCorrecta);
+	    return resuelto;
+		
+		//resuelto = respuesta.equals(respuestaCorrecta);
+		//return resuelto;
 	}
 
 	@Override

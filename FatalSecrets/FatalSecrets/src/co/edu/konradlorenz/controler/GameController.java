@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+
 import co.edu.konradlorenz.model.*;
 import co.edu.konradlorenz.view.*;
 
@@ -103,7 +105,7 @@ public class GameController implements ActionListener{
 		Riddle act5Profesora = new Riddle("Necesito encontrar el número de la llave de este salón", "144");
 		Riddle act6Recepcionista = new Riddle("Yo creo mucho en la suerte, solo hablaré contigo si adivinas el número en el que estoy pensando", "0");//Este numero es Random
 		Riddle act7Cocinero = new Riddle("Necesito que ajustes el tiempo del microondas", "");//Tiempo real
-		Riddle act8Vigilante = new Riddle("Necesito recordar la clave de acceso al sistema de seguridad de la universidad", "FUKONRADL");	
+		Riddle act8Vigilante = new Riddle("Necesito recordar la clave de acceso al sistema de seguridad de la universidad", "fukonradl");	
 		
 		// ------------------------------------ CREAR NPCS -----------------------------------------
 		
@@ -173,15 +175,20 @@ public class GameController implements ActionListener{
 	public void showRiddleDialog(NPC npc) {
 	    Riddle riddle = npc.getAcertijo();
 	    RiddleDialog riddleDialog = new RiddleDialog(objGameWindow, npc.getDescripcion(), riddle.getPregunta());
-	    riddleDialog.addSubmitListener(e -> {
+	    riddleDialog.addSubmitListener(ev -> {
 		    String respuesta = riddleDialog.getAnswer();
-		    if (riddle.comprobar(respuesta)) {
-		    	riddleDialog.setFeedback("¡Correcto!");
-		        riddleDialog.setVisible(false);
-		        showTestimonyDialog(npc);
-		    } else {
-		        riddleDialog.setFeedback("Respuesta incorrecta.");
-		    }
+		    try {
+	            if (riddle.comprobar(respuesta)) {
+	                riddleDialog.setFeedback("¡Correcto!");
+	                riddleDialog.setVisible(false);
+	                showTestimonyDialog(npc);
+	            } else {
+	            	
+	                riddleDialog.setFeedback("Respuesta incorrecta.");
+	            }
+	        } catch (InvalidAnswerException ex) {
+	        	JOptionPane.showMessageDialog(null, "Error al validar la respuesta: \r\n" + ex.getMessage(), "Invalid_Answer_Exception", JOptionPane.ERROR_MESSAGE);
+	        }
         });
 	    riddleDialog.setVisible(true);
 	}
