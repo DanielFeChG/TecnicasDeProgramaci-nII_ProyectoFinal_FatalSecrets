@@ -14,13 +14,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor4_BathroomScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
 	private ImageIcon characterImage ;
-	private JLabel lblTite;
+	private ImageIcon leftBackImage;
+	Image imagenEscalada;
+	
+	private JLabel lblTitle;
 	private JButton btnGoBack;
 	private JButton botonPersonaje;
 
@@ -31,22 +35,31 @@ public class Floor4_BathroomScreen extends JPanel {
 		cargarImagen();
 
 		// Inicialización de los elementos declarados fuera del constructor
-		lblTite = new JLabel("Baño 4 Piso");
-		lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-		lblTite.setForeground(Color.BLACK);
-		lblTite.setBounds(396, 665, 166, 58);
-		add(lblTite);
+		lblTitle = new JLabel("Baño piso 4");
+		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 153, 30);
+        add(lblTitle);
 
-		btnGoBack = new JButton("Volver al ascensor");
-		btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-		btnGoBack.setBounds(54, 653, 243, 58);
-		btnGoBack.addActionListener(new ActionListener() {
+        btnGoBack = new JButton();
+        btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
+        btnGoBack.setBounds(20, 631, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+        leftBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(leftBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver al elevador");
+        btnGoBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gameWindow.updateScreen(gameWindow.getElevator());
 			}
 		});
-		add(btnGoBack);
+        add(btnGoBack);
 
 		// Personaje como botón
 		botonPersonaje = new JButton();
@@ -77,6 +90,7 @@ public class Floor4_BathroomScreen extends JPanel {
 		// Cargar la imagen desde un archivo
 		backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor4_BathroomImg.jpg"));
 		characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/JanitorImg.png"));
+    	leftBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
@@ -111,11 +125,11 @@ public class Floor4_BathroomScreen extends JPanel {
 	}
 
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 
 	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+		this.lblTitle = lblTite;
 	}
 
 	public JButton getBtnGoBack() {

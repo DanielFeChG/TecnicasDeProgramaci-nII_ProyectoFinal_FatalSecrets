@@ -13,16 +13,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor8_ReceptionScreen extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private BufferedImage backgroundImage;
-    private ImageIcon characterImage ;
+    private ImageIcon characterImage;
+    private ImageIcon leftBackImage;
+	Image imagenEscalada;
 
     // Declaración de elementos fuera del constructor
     private JButton btnGoBack;
-    private JLabel lblTite;
+    private JLabel lblTitle;
     private JButton botonPersonaje;
     
     public Floor8_ReceptionScreen(GameWindow gameWindow) {
@@ -31,21 +34,30 @@ public class Floor8_ReceptionScreen extends JPanel {
         cargarImagen();
 
         // Inicialización de elementos en el constructor
-        lblTite = new JLabel("Recepcion");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(406, 666, 176, 58);
-        add(lblTite);
+        lblTitle = new JLabel("Recepción");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 130, 39);
+        add(lblTitle);
         
-        btnGoBack = new JButton("Volver al ascensor");
+        btnGoBack = new JButton();
         btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoBack.setBounds(54, 653, 243, 58);
+        btnGoBack.setBounds(862, 633, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+        leftBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(leftBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver al elevador");
         btnGoBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameWindow.updateScreen(gameWindow.getElevator());
-            }
-        });
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameWindow.updateScreen(gameWindow.getElevator());
+			}
+		});
         add(btnGoBack);
         
         // Personaje como botón
@@ -79,7 +91,8 @@ public class Floor8_ReceptionScreen extends JPanel {
              // Cargar la imagen desde un archivo
              backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor8_ReceptionImg.jpg"));
              characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ReceptionistImg.png"));
-         } catch (IOException e) {
+             leftBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/rightBackImg.png"));
+    	 } catch (IOException e) {
              e.printStackTrace();
          }
     	
@@ -121,11 +134,11 @@ public class Floor8_ReceptionScreen extends JPanel {
 	}
 
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 
-	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+	public void setLblTite(JLabel lblTitle) {
+		this.lblTitle = lblTitle;
 	}
 
 	public JButton getBotonPersonaje() {

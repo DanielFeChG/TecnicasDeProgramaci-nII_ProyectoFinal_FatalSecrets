@@ -13,16 +13,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor7_AisleScreen extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private BufferedImage backgroundImage;
-	private ImageIcon ObjectImage ;
+	private ImageIcon ObjectImage;
+	private ImageIcon leftBackImage;
+	Image imagenEscalada;
 	
 	private JLabel lblObjectImage;
     private JButton btnGoBack;
-    private JLabel lblTite;
+    private JLabel lblTitle;
     
     
     public Floor7_AisleScreen(GameWindow gameWindow) {
@@ -30,21 +33,30 @@ public class Floor7_AisleScreen extends JPanel {
         setLayout(null);
         cargarImagen();
         
-        lblTite = new JLabel("Pasillo 7° piso");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(398, 666, 237, 58);
-        add(lblTite);
+        lblTitle = new JLabel("Pasillo piso 7");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 170, 30);
+        add(lblTitle);
         
-        btnGoBack = new JButton("Volver al ascensor");
+        btnGoBack = new JButton();
         btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoBack.setBounds(54, 653, 243, 58);
+        btnGoBack.setBounds(20, 631, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+        leftBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(leftBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver al elevador");
         btnGoBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameWindow.updateScreen(gameWindow.getElevator());
-            }
-        });
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameWindow.updateScreen(gameWindow.getElevator());
+			}
+		});
         add(btnGoBack);
         
         // Label para la imagen del trapero
@@ -73,7 +85,8 @@ public class Floor7_AisleScreen extends JPanel {
              // Cargar la imagen desde un archivo
              backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor7_AisleImg.jpg"));
              ObjectImage = new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/MopImage.png"));
-             } catch (IOException e) {
+             leftBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
+    	 } catch (IOException e) {
                  e.printStackTrace();
              }
     	
@@ -106,11 +119,11 @@ public class Floor7_AisleScreen extends JPanel {
 	}
 
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 
 	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+		this.lblTitle = lblTite;
 	}
     
     

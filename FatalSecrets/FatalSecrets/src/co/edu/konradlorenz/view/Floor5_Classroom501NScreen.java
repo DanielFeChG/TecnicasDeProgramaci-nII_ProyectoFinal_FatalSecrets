@@ -14,16 +14,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor5_Classroom501NScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage ;
+	private ImageIcon characterImage;
+	private ImageIcon rightBackImage;
+	Image imagenEscalada;
+	
 	//Delcaracion de elementos
     private JButton botonPersonaje;
     private JButton btnGoBack;
-    private JLabel lblTite;
+    private JLabel lblTitle;
     
     public Floor5_Classroom501NScreen(GameWindow gameWindow) {
         setSize(1004, 734);
@@ -32,22 +36,31 @@ public class Floor5_Classroom501NScreen extends JPanel {
         cargarImagen();
         
         // Inicialización de elementos en el constructor
-        lblTite = new JLabel("Salón 501-N");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(405, 666, 214, 58);
-        add(lblTite);
+        lblTitle = new JLabel("Salón 501-N");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 163, 30);
+        add(lblTitle);
         
-        btnGoBack = new JButton("Volver al ascensor");
-        btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoBack.setBounds(54, 653, 243, 58);
-        btnGoBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameWindow.updateScreen(gameWindow.getElevator());
-            }
-        });
-        add(btnGoBack);
+        btnGoBack = new JButton();
+		btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
+		btnGoBack.setBounds(888, 646, 106, 78);
+		imagenEscalada = rightBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+		rightBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(rightBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver al elevador");
+		btnGoBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameWindow.updateScreen(gameWindow.getCentralBuilding());
+			}
+		});
+		add(btnGoBack);
         
         // Personaje como botón
         botonPersonaje = new JButton();
@@ -55,7 +68,7 @@ public class Floor5_Classroom501NScreen extends JPanel {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        botonPersonaje.setBounds(137, 217, 385, 742);
+        botonPersonaje.setBounds(137, 217, 370, 742);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -76,10 +89,10 @@ public class Floor5_Classroom501NScreen extends JPanel {
     }
     public void cargarImagen() {
     	 try {
-             // Cargar la imagen desde un archivo
-             backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
-             characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/TeacherImg.png"));
-         	
+    		 // Cargar la imagen desde un archivo
+    		 backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor5_Classroom501NImg.jpg"));
+    		 characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/TeacherImg.png"));
+    		 rightBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/rightBackImg.png"));
          } catch (IOException e) {
              e.printStackTrace();
          }
@@ -129,11 +142,11 @@ public class Floor5_Classroom501NScreen extends JPanel {
 	}
 
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 
 	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+		this.lblTitle = lblTite;
 	}
     
     

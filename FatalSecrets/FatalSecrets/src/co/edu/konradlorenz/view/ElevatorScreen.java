@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class ElevatorScreen extends JPanel {
 
@@ -22,12 +23,15 @@ public class ElevatorScreen extends JPanel {
 	public ElevatorScreen(GameWindow gameWindow) {
 		setSize(1004,734);
         setLayout(null);
-        // Crear y configurar el título
-        JLabel lblTite = new JLabel("Elevador");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(436, 676, 155, 58); // Establecer la posición del título
-        add(lblTite); // Agregar al JPanel
+        
+        JLabel lblTitle = new JLabel("Elevador");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 120, 30);
+        add(lblTitle);
         
         JButton btnGoF1;
         btnGoF1 = new JButton("");

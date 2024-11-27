@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class CentralBuildingScreen extends JPanel {
 
@@ -25,7 +26,7 @@ public class CentralBuildingScreen extends JPanel {
 	Image imagenEscalada;
 	
 	private JButton btnGoBack, botonPersonaje;
-	
+	private JLabel lblTitle;
 	
 	
 	
@@ -35,17 +36,21 @@ public class CentralBuildingScreen extends JPanel {
 		
 		setSize(1004,734);
         setLayout(null);
-        JLabel lblTite = new JLabel("Edificio central");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(351, 676, 265, 58);
-        add(lblTite); // Agregar al JPanel
+        
+        lblTitle = new JLabel("Edificio central");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 207, 30);
+        add(lblTitle);
         
         
         JButton btnGoCafeteria;
         btnGoCafeteria = new JButton("Entrar a la universidad");
         btnGoCafeteria.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoCafeteria.setBounds(693, 640, 289, 58);
+        btnGoCafeteria.setBounds(686, 666, 289, 58);
         btnGoCafeteria.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -56,7 +61,7 @@ public class CentralBuildingScreen extends JPanel {
         
         
         JButton btnGoGym;
-        btnGoGym = new JButton("");
+        btnGoGym = new JButton();
         btnGoGym.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
         btnGoGym.setBounds(27, 354, 98, 44);
         imagenEscalada = leftImage.getImage().getScaledInstance(btnGoGym.getWidth(), btnGoGym.getHeight(), Image.SCALE_SMOOTH);
@@ -74,23 +79,23 @@ public class CentralBuildingScreen extends JPanel {
         add(btnGoGym); 
         
         
-        JButton btnBack;
-        btnBack = new JButton();
-        btnBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnBack.setBounds(100, 646, 106, 78);
-        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnBack.getWidth(), btnBack.getHeight(), Image.SCALE_SMOOTH);
+        JButton btnGoBack;
+        btnGoBack = new JButton();
+        btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
+        btnGoBack.setBounds(100, 646, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
         leftBackImage = new ImageIcon(imagenEscalada);
-        btnBack.setIcon(leftBackImage);
-        btnBack.setBorderPainted(false);
-        btnBack.setContentAreaFilled(false);
-        btnBack.setToolTipText("Volver a la Oficina");
-        btnBack.addActionListener(new ActionListener() {
+        btnGoBack.setIcon(leftBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver a la Oficina");
+        btnGoBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gameWindow.updateScreen(gameWindow.getDetectiveOffice());
 			}
 		});
-        add(btnBack); 
+        add(btnGoBack); 
         
         //Personaje como boton
         botonPersonaje = new JButton();

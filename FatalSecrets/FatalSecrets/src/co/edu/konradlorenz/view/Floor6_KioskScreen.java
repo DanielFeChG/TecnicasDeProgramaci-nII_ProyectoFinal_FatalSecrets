@@ -14,15 +14,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor6_KioskScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage ;
+	private ImageIcon characterImage;
+	private ImageIcon rightBackImage;
+	Image imagenEscalada;
+	
     private JButton botonPersonaje;
     private JButton btnGoBack;
-    private JLabel lblTite;
+    private JLabel lblTitle;
     
 	public Floor6_KioskScreen(GameWindow gameWindow) {
 		setSize(1004, 734);
@@ -30,15 +34,24 @@ public class Floor6_KioskScreen extends JPanel {
         cargarImagen();
         
         // Inicialización de elementos en el constructor
-        lblTite = new JLabel("kiosko");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(Color.BLACK);
-        lblTite.setBounds(406, 666, 130, 58);
-        add(lblTite);
+        lblTitle = new JLabel("Kiosko");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 87, 30);
+        add(lblTitle);
         
-        btnGoBack = new JButton("Volver a la terraza");
+        btnGoBack = new JButton();
         btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoBack.setBounds(734, 655, 243, 58);
+		btnGoBack.setBounds(888, 646, 106, 78);
+		imagenEscalada = rightBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+		rightBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(rightBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver a la terraza");
         btnGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,6 +73,7 @@ public class Floor6_KioskScreen extends JPanel {
         // Label para la imagen del fondo ELIMINAR CUANDO SE TERMINE DE AJUSTAR
         ImageIcon echaracterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_KioskImg.jpg"));
         JLabel lbleCharacterImage = new JLabel();
+        lbleCharacterImage.setForeground(Color.BLACK);
         lbleCharacterImage.setSize(getSize());
         Image eresizedImage = echaracterImage.getImage().getScaledInstance(lbleCharacterImage.getWidth(), lbleCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
         ImageIcon eresizedIcon = new ImageIcon(eresizedImage);
@@ -74,7 +88,8 @@ public class Floor6_KioskScreen extends JPanel {
 	            // Cargar la imagen desde un archivo
 	            backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor6_KioskImg.jpg"));
 	            characterImage =  new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/NPCs/ChefImg.png"));
-	        } catch (IOException e) {
+	    		rightBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/rightBackImg.png"));
+		 } catch (IOException e) {
 	            e.printStackTrace();
 	        }
 		
@@ -123,11 +138,11 @@ public class Floor6_KioskScreen extends JPanel {
 	}
 
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 
 	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+		this.lblTitle = lblTite;
 	}
     
     

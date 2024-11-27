@@ -13,12 +13,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor2_LibraryScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage ;
+	private ImageIcon characterImage;
+	private ImageIcon leftBackImage;
+	Image imagenEscalada;
+	
 	//Delcaracion de elementos
 	private JButton btnGoBack, botonPersonaje;
 
@@ -28,16 +32,25 @@ public class Floor2_LibraryScreen extends JPanel {
 		
 		setSize(1004,734);
         setLayout(null);
-        JLabel lblTite = new JLabel("Biblioteca");
-        lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-        lblTite.setForeground(new Color(255, 255, 255));
-        lblTite.setBounds(395, 10, 167, 58);
-        add(lblTite);
+        JLabel lblTitle = new JLabel("Biblioteca");
+        lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 135, 30);
+        add(lblTitle);
         
         
-        btnGoBack = new JButton("Volver al ascensor");
+        btnGoBack = new JButton();
         btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-        btnGoBack.setBounds(52, 643, 243, 58);
+        btnGoBack.setBounds(20, 631, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+        leftBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(leftBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver al elevador");
         btnGoBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -53,7 +66,7 @@ public class Floor2_LibraryScreen extends JPanel {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        botonPersonaje.setBounds(49, 199, 259, 535);
+        botonPersonaje.setBounds(480, 199, 259, 535);
         Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         botonPersonaje.setIcon(iconoEscalado);
@@ -79,7 +92,8 @@ public class Floor2_LibraryScreen extends JPanel {
         // Cargar la imagen desde un archivo
     	backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor2_LibraryImg.jpg"));
     	characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/LibrarianImg.png"));
-	    } catch (IOException e) {
+    	leftBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
+		} catch (IOException e) {
 	        e.printStackTrace();
 	    }
 	}

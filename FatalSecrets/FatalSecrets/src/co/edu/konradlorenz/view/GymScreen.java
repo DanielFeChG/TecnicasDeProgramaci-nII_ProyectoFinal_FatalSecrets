@@ -13,13 +13,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class GymScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
-	private ImageIcon characterImage ;
-	private JLabel lblTite;
+	private ImageIcon characterImage;
+	private ImageIcon leftBackImage;
+	Image imagenEscalada;
+	
+	private JLabel lblTitle;
 	private JButton btnGoBack;
 	private JButton botonPersonaje;
 
@@ -32,15 +36,24 @@ public class GymScreen extends JPanel {
 		cargarImagen();
 
 		// Inicialización de los elementos declarados fuera del constructor
-		lblTite = new JLabel("Gimnasio");
-		lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-		lblTite.setForeground(Color.BLACK);
-		lblTite.setBounds(406, 666, 130, 58);
-		add(lblTite);
-
-		btnGoBack = new JButton("Volver al edificio central");
-		btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-		btnGoBack.setBounds(54, 653, 243, 58);
+		lblTitle = new JLabel("Gimnasio");
+		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 131, 30);
+        add(lblTitle);
+        
+        btnGoBack = new JButton();
+        btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
+        btnGoBack.setBounds(20, 631, 106, 78);
+        imagenEscalada = leftBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+        leftBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(leftBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Volver al edificio central");
 		btnGoBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +92,7 @@ public class GymScreen extends JPanel {
 			// Cargar la imagen desde un archivo
 			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/GymImg.jpg"));
 			characterImage= new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/GymInstructorImg.png"));
-			
+            leftBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftBackImg.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -108,10 +121,10 @@ public class GymScreen extends JPanel {
 		this.characterImage = characterImage;
 	}
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+		this.lblTitle = lblTite;
 	}
 	public JButton getBtnGoBack() {
 		return btnGoBack;

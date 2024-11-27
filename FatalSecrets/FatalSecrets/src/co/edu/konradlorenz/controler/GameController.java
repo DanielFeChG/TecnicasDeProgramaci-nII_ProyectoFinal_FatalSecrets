@@ -63,12 +63,12 @@ public class GameController implements ActionListener{
 	        (NPC) casoJuego.getUbicaciones().get(8).getEntidadesLugar().get(0) // NPC del Salón 501N
 	    );
 	    buttonNpcMap.put(
-	        objGameWindow.getFloor6_Terrace().getBotonPersonaje(),
-	        (NPC) casoJuego.getUbicaciones().get(9).getEntidadesLugar().get(0) // NPC de la Terraza
+	        objGameWindow.getFloor6_Kiosk().getBotonPersonaje(),
+	        (NPC) casoJuego.getUbicaciones().get(10).getEntidadesLugar().get(0) // NPC de la Terraza
 	    );
 	    buttonNpcMap.put(
 	        objGameWindow.getFloor8_Reception().getBotonPersonaje(),
-	        (NPC) casoJuego.getUbicaciones().get(11).getEntidadesLugar().get(0) // NPC de la Recepción
+	        (NPC) casoJuego.getUbicaciones().get(12).getEntidadesLugar().get(0) // NPC de la Recepción
 	    );
 	    buttonNpcMap.put(
 	        objGameWindow.getGym().getBotonPersonaje(),
@@ -112,7 +112,7 @@ public class GameController implements ActionListener{
 				+ "Conserje - Buenas tardes, sí me encuentro ocupado, debo terminar de hacer la limpieza en otros dos pisos para terminar mi turno y estoy un poco retrasado porque no recuerdo dónde dejé el trapero.\r\n"
 				+ "Tú - ¿Si lo ayudo a encontrarlo podría regalarme tan solo unos minutos?\r\n"
 				+ "Conserje – Está bien.\r\n"
-				+ "", "pasillo 7 piso");
+				+ "", "pasillo piso 7");
 		Riddle act3Instructora = new Riddle("Tú - Buenas tardes, soy… Mmm veo que se encuentra algo desesperada, ¿puedo ayudarla con algo?\r\n"
 				+ "Instructora - Verás, perdí la combinación del candado de mi casillero. Guardaba algunas cosas personales importantes allí, y ahora... no sé qué hacer. \r\n"
 				+ "Tú - ¿Sabe si la combinación está registrada en algún lugar?\r\n"
@@ -121,7 +121,7 @@ public class GameController implements ActionListener{
 				+ "Instructora - Bueno, no quiero acusar a nadie sin pruebas, pero hay un grupo que suele venir bastante seguido al gimnasio: SANABRIA CAMPOS Juan, CHAVEZ GONZALEZ Daniel, AVILA ZULUAGA Esteban y GARCIA RODRIGUEZ Sebastián. Puede que ellos tengan que ver con esto porque esos estudiantes son... un tanto traviesos.\r\n"
 				+ "Tú - Muy bien, investigaré eso. \r\n"
 				+ "Instructora - Te lo agradecería mucho. Necesito abrir este casillero lo antes posible. ¡Y no tengo ni idea de qué hacer si no encuentro la combinación!\r\n"
-				+ "", "solucion");//Con las adivinanzas de las aulas virtuales
+				+ "", "fukl");//Con las adivinanzas de las aulas virtuales
 		Riddle act4Bibliotecario = new Riddle("Tú -¿Buenas tardes, señor, que está haciendo?\r\n"
 				+ "Bibliotecario - Estoy organizando unos libros que han devuelto los estudiantes, pero no he podido encontrar la ubicación de este libro porque se le despegó el sticker que muestra dónde ubicarlo…\r\n"
 				+ "Tú - Tal vez yo pueda ayudarle…\r\n"
@@ -133,11 +133,9 @@ public class GameController implements ActionListener{
 		Riddle act6Recepcionista = new Riddle("Tú: Buenas tardes.\r\n"
 				+ "Recepcionista: Solo atiendo a decanos y directivos.\r\n"
 				+ "Tú: Hmm…", String.valueOf(rd.nextInt(10)+1));//Este numero es Random
-		Riddle act7Cocinero = new Riddle("Tú: Buenas tardes. Disculpe, ¿qué está haciendo?\r\n"
-				+ "Cocinero: Hola. Estoy tratando de ajustar el tiempo del microondas, pero no logro configurarlo correctamente.\r\n"
-				+ "Tú: ¿Pueda ayudar?\r\n"
-				+ "Cocinero: Hola. Este microondas se desconfiguró y no he podido ajustar el tiempo correctamente. Podrías intentarlo tú, ¿verdad?\r\n"
-				+ "Tú: Claro, déjeme verlo.", "");//Tiempo real
+		Riddle act7Cocinero = new Riddle("Tú: Buenas tardes. Disculpe, ¿me permite un momento?\r\n"
+				+ "Cocinero: Ahora no. Este microondas se desconfiguró y no he podido ajustar el tiempo correctamente, al parecer está en modo de fabrica pero no logro comprender las instrucciones. Tal vez usted entienda.\r\n"
+				+ "Tú: Claro, déjeme verlo...", "64");
 		Riddle act8Vigilante = new Riddle("Tú - Buenas tardes, ¿podría ayudarme con unas preguntas?\r\n"
 				+ "Vigilante - Buenas tardes, claro, pero... ahora mismo estoy lidiando con un problema.\r\n"
 				+ "Tú - ¿Algo en lo que pueda ayudarle?\r\n"
@@ -157,7 +155,7 @@ public class GameController implements ActionListener{
 				+ "", studentID, Color.RED);
 		NPC estudiante = new Innocent("Daniel", "Estudiante", "Fuí a la oficina del decano porque...", act1Estudiante, stickerBook, Color.BLUE);
 		NPC conserje = new Innocent("Fabian", "Conserje", "He estado haciendo el aseo de los baños de todos los pisos...", act2Conserje, keysGuide, Color.GREEN);
-		NPC instructura = new Innocent("Natalia", "Instructora", "Como todos los dias he estado unicamente en el giimnasio...", act3Instructora, null, Color.YELLOW);
+		NPC instructora = new Innocent("Natalia", "Instructora", "Como todos los dias he estado unicamente en el giimnasio...", act3Instructora, null, Color.YELLOW);
 		NPC bibliotecario = new Innocent("Uriel", "Bibliotecario", "Estaba organizando uns libros que devolvieron.. pero kmlkf sdopef eefefmrlk m kefmwkemfkewmo kefmefmwolf oef ef i efmwekmlmewflnwef ked knmlkwefm este es el final", act4Bibliotecario, null, Color.PINK);
 		NPC profesora = new Innocent("Lucía", "Profesora", "Estaba reemplazando al profesor en la clase de programación pq no llegó...", act5Profesora, null, Color.CYAN);
 		NPC recepcionista = new Innocent("Rocio", "Recepcionista", "Todo el día he estado en mi puesto de trabajo...", act6Recepcionista, null, Color.MAGENTA);
@@ -174,8 +172,9 @@ public class GameController implements ActionListener{
 		Location piso2 = new Location("Biblioteca", true);
 		Location piso3 = new Location("Aula de sistemas", true);
 		Location piso4 = new Location("Pasillo cuarto piso", true);
-		Location piso5 = new Location("Salón 501-N", false);
+		Location piso5 = new Location("Salón 501-N", true);
 		Location piso6 = new Location("Terraza sexto piso", true);
+		Location piso6k = new Location("Kiosko sexto piso", true);
 		Location piso7 = new Location("Pasillo séptimo piso", true);
 		Location piso8 = new Location("Recepción decanatura", true);
 		
@@ -194,8 +193,10 @@ public class GameController implements ActionListener{
 		casoJuego.getUbicaciones().add(piso4); //7
 		casoJuego.getUbicaciones().add(piso5); //8
 		casoJuego.getUbicaciones().add(piso6); //9
-		casoJuego.getUbicaciones().add(piso7); //10
-		casoJuego.getUbicaciones().add(piso8); //11
+		casoJuego.getUbicaciones().add(piso6k); //10
+		casoJuego.getUbicaciones().add(piso7); //11
+		casoJuego.getUbicaciones().add(piso8); //12
+		
 		
 		// Agregar y ubicar NPCs
 		casoJuego.getUbicaciones().get(4).getEntidadesLugar().add(esposa);
@@ -203,10 +204,10 @@ public class GameController implements ActionListener{
 		casoJuego.getUbicaciones().get(6).getEntidadesLugar().add(estudiante);
 		casoJuego.getUbicaciones().get(7).getEntidadesLugar().add(conserje);
 		casoJuego.getUbicaciones().get(8).getEntidadesLugar().add(profesora);
-		casoJuego.getUbicaciones().get(9).getEntidadesLugar().add(cocinero);
-		casoJuego.getUbicaciones().get(11).getEntidadesLugar().add(recepcionista);		
+		casoJuego.getUbicaciones().get(10).getEntidadesLugar().add(cocinero);
+		casoJuego.getUbicaciones().get(12).getEntidadesLugar().add(recepcionista);		
 		casoJuego.getUbicaciones().get(1).getEntidadesLugar().add(vigilante);		
-		casoJuego.getUbicaciones().get(2).getEntidadesLugar().add(instructura);		
+		casoJuego.getUbicaciones().get(2).getEntidadesLugar().add(instructora);		
 		
 		}
 

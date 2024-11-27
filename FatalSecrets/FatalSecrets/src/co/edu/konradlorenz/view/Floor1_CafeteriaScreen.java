@@ -13,17 +13,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Floor1_CafeteriaScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BufferedImage backgroundImage;
 	private ImageIcon characterImage; 
-	private JLabel lblTite;
+	private ImageIcon rightBackImage;
+	private ImageIcon leftImage;
+	private JLabel lblTitle;
 	private JButton btnGoBack;
 	private JButton btnGoElevator;
 	private JButton botonPersonaje;
-
+	Image imagenEscalada;
 	/**
 	 * Constructor del panel.
 	 */
@@ -34,15 +37,24 @@ public class Floor1_CafeteriaScreen extends JPanel {
 		setSize(1004, 734);
 		setLayout(null);
 
-		lblTite = new JLabel("Cafetería");
-		lblTite.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 40));
-		lblTite.setForeground(Color.BLACK);
-		lblTite.setBounds(426, 666, 161, 58);
-		add(lblTite);
+		lblTitle = new JLabel("Cafetería");
+		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setOpaque(true);
+	    lblTitle.setBackground(new Color(0, 0, 0, 128));
+        lblTitle.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 30));
+        lblTitle.setForeground(Color.WHITE);
+        lblTitle.setBounds(20, 10, 118, 30);
+        add(lblTitle);
 
-		btnGoBack = new JButton("Salir del edificio");
+		btnGoBack = new JButton();
 		btnGoBack.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-		btnGoBack.setBounds(64, 653, 243, 58);
+		btnGoBack.setBounds(888, 646, 106, 78);
+		imagenEscalada = rightBackImage.getImage().getScaledInstance(btnGoBack.getWidth(), btnGoBack.getHeight(), Image.SCALE_SMOOTH);
+		rightBackImage = new ImageIcon(imagenEscalada);
+        btnGoBack.setIcon(rightBackImage);
+        btnGoBack.setBorderPainted(false);
+        btnGoBack.setContentAreaFilled(false);
+        btnGoBack.setToolTipText("Salir del edificio");
 		btnGoBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -51,9 +63,15 @@ public class Floor1_CafeteriaScreen extends JPanel {
 		});
 		add(btnGoBack);
 
-		btnGoElevator = new JButton("Entrar al ascensor");
+		btnGoElevator = new JButton();
 		btnGoElevator.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 25));
-		btnGoElevator.setBounds(703, 653, 243, 58);
+		btnGoElevator.setBounds(10, 364, 98, 44);
+		imagenEscalada = leftImage.getImage().getScaledInstance(btnGoElevator.getWidth(), btnGoElevator.getHeight(), Image.SCALE_SMOOTH);
+        leftImage = new ImageIcon(imagenEscalada);
+        btnGoElevator.setIcon(leftImage);
+        btnGoElevator.setBorderPainted(false);
+        btnGoElevator.setContentAreaFilled(false);
+        btnGoElevator.setToolTipText("Entrar al ascensor");
 		btnGoElevator.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +82,11 @@ public class Floor1_CafeteriaScreen extends JPanel {
 
 		// Personaje como botón
 		botonPersonaje = new JButton();
-		botonPersonaje.setBounds(734, 302, 223, 432);
+		botonPersonaje.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		botonPersonaje.setBounds(504, 302, 223, 432);
 		Image imagenEscalada = characterImage.getImage().getScaledInstance(botonPersonaje.getWidth(), botonPersonaje.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
 		botonPersonaje.setIcon(iconoEscalado);
@@ -77,7 +99,7 @@ public class Floor1_CafeteriaScreen extends JPanel {
         // Label para el polcía 
         ImageIcon characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/PoliceManImg.png"));
         JLabel lblCharacterImage = new JLabel();
-        lblCharacterImage.setBounds(547, 291, 215, 443);
+        lblCharacterImage.setBounds(279, 291, 215, 443);
         Image resizedImage = characterImage.getImage().getScaledInstance(lblCharacterImage.getWidth(), lblCharacterImage.getHeight(), Image.SCALE_SMOOTH);// Redimensionar la imagen al tamaño del JLabel
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
         lblCharacterImage.setIcon(resizedIcon);
@@ -104,18 +126,20 @@ public class Floor1_CafeteriaScreen extends JPanel {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
     }
-public void cargarImagen(){
-	try {
-		// Cargar la imagen desde un archivo
-		backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor1_CafeteriaImg.jpg"));
-		characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/WifeImg.png"));
-		
-	} catch (IOException e) {
-		e.printStackTrace();
+    
+	public void cargarImagen(){
+		try {
+			// Cargar la imagen desde un archivo
+			backgroundImage = ImageIO.read(getClass().getResource("/co/edu/konradlorenz/view/images/Ubicaciones/Floor1_CafeteriaImg.jpg"));
+			characterImage = new ImageIcon(Floor2_LibraryScreen.class.getResource("/co/edu/konradlorenz/view/images/NPCs/WifeImg.png"));
+			rightBackImage= new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/rightBackImg.png"));
+        	leftImage =  new ImageIcon(GameWindow.class.getResource("/co/edu/konradlorenz/view/images/Objetos/leftImg.png"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
 	}
-	
-	
-}
+
 	public BufferedImage getBackgroundImage() {
 		return backgroundImage;
 	}
@@ -133,11 +157,11 @@ public void cargarImagen(){
 	}
 
 	public JLabel getLblTite() {
-		return lblTite;
+		return lblTitle;
 	}
 
-	public void setLblTite(JLabel lblTite) {
-		this.lblTite = lblTite;
+	public void setLblTite(JLabel lblTitle) {
+		this.lblTitle = lblTitle;
 	}
 
 	public JButton getBtnGoBack() {
